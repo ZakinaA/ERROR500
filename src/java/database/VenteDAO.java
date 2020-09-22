@@ -12,9 +12,11 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import modele.CategVente;
+import modele.Cheval;
 import modele.Client;
 import modele.Courriel;
 import modele.Lieu;
+import modele.Lot;
 import modele.Pays;
 import modele.Vente;
 
@@ -161,6 +163,50 @@ public class VenteDAO {
             //out.println("Erreur lors de l’établissement de la connexion");
         }
         return lesCourriels ;    
+    }
+    
+    public static ArrayList<Lot>  getLesLots(Connection connection, String idVente){      
+        ArrayList<Lot> lesLots = new  ArrayList<Lot>();
+        try
+        {
+            //preparation de la requete     
+            //codeCateg="ETE";
+            requete=connection.prepareStatement("SELECT l.*, c.nom, v.nom as nomVente FROM lot l, vente v, cheval c WHERE l.codeVente=v.id and l.idcheval=c.id and codeVente=? ");
+            requete.setString(1, idVente);
+            //executer la requete
+            
+            System.out.println("requete"+requete.toString());
+            rs=requete.executeQuery();
+             
+            //On hydrate l'objet métier Client avec les résultats de la requête
+            while ( rs.next() ) {  
+                
+                
+                
+                Lot unLot = new Lot();
+                unLot.setId(rs.getInt("id"));
+                unLot.setPrixdepart(rs.getString("prixDepart"));
+                
+                Cheval unCheval = new Cheval();
+                unCheval.setNom(rs.getString("nom"));
+                
+                unLot.setUnCheval(unCheval);
+                
+                
+                
+                /*CategVente uneCateg = new CategVente();
+                uneCateg.setCode(rs.getString("code"));  // on aurait aussi pu prendre CodeCateg
+                uneCateg.setLibelle(rs.getString("libelle"));*/
+                
+                lesLots.add(unLot);
+            }
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return lesLots ;    
     }
     
     
