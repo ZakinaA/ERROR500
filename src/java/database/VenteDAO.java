@@ -171,7 +171,7 @@ public class VenteDAO {
         {
             //preparation de la requete     
             //codeCateg="ETE";
-            requete=connection.prepareStatement("SELECT l.*, c.nom, v.nom as nomVente FROM lot l, vente v, cheval c WHERE l.codeVente=v.id and l.idcheval=c.id and codeVente=? ");
+            requete=connection.prepareStatement("SELECT l.*, c.sire, c.nom, v.nom as nomVente FROM lot l, vente v, cheval c WHERE l.codeVente=v.id and l.idcheval=c.sire and codeVente=? ");
             requete.setString(1, idVente);
             //executer la requete
             
@@ -188,6 +188,7 @@ public class VenteDAO {
                 unLot.setPrixdepart(rs.getString("prixDepart"));
                 
                 Cheval unCheval = new Cheval();
+                unCheval.setSire(rs.getString("sire"));
                 unCheval.setNom(rs.getString("nom"));
                 
                 unLot.setUnCheval(unCheval);

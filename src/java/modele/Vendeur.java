@@ -5,10 +5,26 @@
  */
 package modele;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sio2
  */
-public class Vendeur {
+public class Vendeur extends Client{
+    
+    private ArrayList<Cheval> lesChevaux ;
+
+    public Vendeur() {
+    }
+    
+    
+
+    public Vendeur(int id, String titre, String nom, String prenom, String rue, String copos, String ville, String mail, Pays unPays) {
+        super(id, titre, nom, prenom, rue, copos, ville, mail, unPays);
+    }
+    
+    
+    
     
 }

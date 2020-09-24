@@ -48,6 +48,10 @@
                         out.println("<td>");
                         out.println(unLot.getUnCheval().getNom());
                         out.println("</td>");
+                        
+                        out.println("<td><a href ='../ServletCheval/infoCheval?sireCheval="+ unLot.getUnCheval().getSire()+ "'>");
+                        out.println("Informations Cheval");
+                        out.println("</td>");
 
                     }
                     %>
