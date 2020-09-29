@@ -5,6 +5,7 @@
  */
 package database;
 
+import static database.ClientDAO.requete;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,6 +39,10 @@ public class VenteDAO {
     /* Pour chaque vente, on récupère aussi sa catégorie.
     /* La liste des vente est stockée dans une ArrayList
     */
+    
+   
+    
+    
     public static ArrayList<Vente>  getLesVentes(Connection connection){      
         ArrayList<Vente> lesVentes = new  ArrayList<Vente>();
         try
