@@ -29,6 +29,10 @@
         <servlet-class>servlets.ServletClient</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ServletCheval</servlet-name>
+        <servlet-class>servlets.ServletCheval</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ServletAdmin</servlet-name>
         <servlet-class>servlets.ServletAdmin</servlet-class>
     </servlet>
@@ -55,6 +59,14 @@
     <servlet-mapping>
         <servlet-name>ServletClient</servlet-name>
         <url-pattern>/ServletClient/ajouterClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCheval</servlet-name>
+        <url-pattern>/ServletCheval</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCheval</servlet-name>
+        <url-pattern>/ServletCheval/infoCheval</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletAdmin</servlet-name>
