@@ -64,7 +64,6 @@
         <servlet-name>ServletAdmin</servlet-name>
         <url-pattern>/ServletAdmin/ajouterCategVente</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>ServletAdmin</servlet-name>
         <url-pattern>/ServletAdmin/consulterCategVente</url-pattern>
