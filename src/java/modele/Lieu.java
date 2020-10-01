@@ -14,14 +14,14 @@ import java.util.ArrayList;
 public class Lieu {
     private int id ;
     private String ville;
-    private String nbBoxes;
+    private int nbBoxes;
     private String commentaires;
     private ArrayList<Vente> lesVentes ;
 
     public Lieu() {
     }
 
-    public Lieu(int id, String ville, String nbBoxes, String commentaires) {
+    public Lieu(int id, String ville, int nbBoxes, String commentaires) {
         this.id = id;
         this.ville = ville;
         this.nbBoxes = nbBoxes;
@@ -44,11 +44,11 @@ public class Lieu {
         this.ville = ville;
     }
 
-    public String getNbBoxes() {
+    public int getNbBoxes() {
         return nbBoxes;
     }
 
-    public void setNbBoxes(String nbBoxes) {
+    public void setNbBoxes(int nbBoxes) {
         this.nbBoxes = nbBoxes;
     }
 

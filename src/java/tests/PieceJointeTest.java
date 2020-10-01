@@ -27,7 +27,7 @@ public class PieceJointeTest {
         unePieceJointe1.setChemin("chemintest");
         unePieceJointe1.setDescription("descriptiontest");
         
-        Lieu unLieu1 = new Lieu(1, "", "", "");
+        Lieu unLieu1 = new Lieu(1, "", 9, "");
         
         CategVente uneCategVente1 = new CategVente("","");
         

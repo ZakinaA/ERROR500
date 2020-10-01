@@ -15,7 +15,7 @@ import modele.Cheval;
 import modele.Client;
 import modele.Pays;
 import modele.TypeCheval;
-import modele.Vendeur;
+import modele.Client;
 /**
  *
  * @author sio2
@@ -31,14 +31,14 @@ public class ChevalDAO {
     /* Pour chaque vente, on récupère aussi sa catégorie.
     /* La liste des vente est stockée dans une ArrayList
     */
-    public static Cheval getInfoCheval(Connection connection, String sireCheval){  
+    public static Cheval getInfoCheval(Connection connection, String idCheval){  
         Cheval unCheval = new Cheval();
         try
         {
             //preparation de la requete     
             //codeCateg="ETE";
-            requete=connection.prepareStatement("SELECT c.*, tc.libelle, cl.nom FROM cheval c, typecheval tc, vendeur v, client cl where c.idType=tc.id  and v.ven_cli=c.idVendeur and v.ven_cli=cl.id and sire LIKE ? ");
-            requete.setString(1, sireCheval);
+            requete=connection.prepareStatement("SELECT c.*, tc.libelle, cl.nom FROM cheval c, typecheval tc, client cl where c.idType=tc.id  and c.idClient=cl.id and c.id = ?");
+            requete.setString(1, idCheval);
             //executer la requete
             rs=requete.executeQuery();
              
@@ -46,7 +46,7 @@ public class ChevalDAO {
             while ( rs.next() ) {  
                 
               
-                unCheval.setSire(rs.getString("sire"));
+                unCheval.setId(rs.getInt("c.id"));
                 
                 TypeCheval unTypeCheval = new TypeCheval();
                 unTypeCheval.setLibelle(rs.getString("tc.libelle"));
@@ -58,12 +58,12 @@ public class ChevalDAO {
                 Cheval unChevalMere = new Cheval();
                 unChevalMere.setNom(rs.getString("Mère"));
                 
-                Vendeur unVendeur = new Vendeur();
-                unVendeur.setNom(rs.getString("cl.nom"));
+                Client unClient = new Client();
+                unClient.setNom(rs.getString("cl.nom"));
                 
                 unCheval.setUnPere(unChevalPere);
                 unCheval.setUneMere(unChevalMere);
-                unCheval.setUnVendeur(unVendeur);
+                unCheval.setUnClient(unClient);
                 unCheval.setUnTypeCheval(unTypeCheval);
                 /*CategVente uneCateg = new CategVente();
                 uneCateg.setCode(rs.getString("code"));  // on aurait aussi pu prendre CodeCateg

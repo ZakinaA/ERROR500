@@ -21,7 +21,7 @@ public class CourrielTest {
     
         Courriel unCourriel1 = new Courriel();
         
-        Lieu unLieu1 = new Lieu(1, "", "", "");
+        Lieu unLieu1 = new Lieu(1, "", 8, "");
         
         CategVente uneCategVente1 = new CategVente("","");
         

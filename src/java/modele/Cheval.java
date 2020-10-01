@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author sio2
  */
 public class Cheval {
+    private int id;
     private String sire;
     private String nom;
     private String sexe;
@@ -19,14 +20,14 @@ public class Cheval {
     private TypeCheval unTypeCheval;
     private Cheval unPere;
     private Cheval uneMere;
-    private Vendeur unVendeur;
+    private Client unClient;
     private ArrayList<Lot> lesLots;
-    private ArrayList<Prix> lesPrix;
 
     public Cheval() {
     }
 
-    public Cheval(String sire, String nom, String sexe, String prixDepart, TypeCheval unTypeCheval, Cheval unPere, Cheval uneMere, Vendeur unVendeur) {
+    public Cheval(int id, String sire, String nom, String sexe, String prixDepart, TypeCheval unTypeCheval, Cheval unPere, Cheval uneMere, Client unClient) {
+        this.id = id;
         this.sire = sire;
         this.nom = nom;
         this.sexe = sexe;
@@ -34,7 +35,11 @@ public class Cheval {
         this.unTypeCheval = unTypeCheval;
         this.unPere = unPere;
         this.uneMere = uneMere;
-        this.unVendeur = unVendeur;
+        this.unClient = unClient;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getSire() {
@@ -65,16 +70,16 @@ public class Cheval {
         return uneMere;
     }
 
-    public Vendeur getUnVendeur() {
-        return unVendeur;
+    public Client getUnClient() {
+        return unClient;
     }
 
     public ArrayList<Lot> getLesLots() {
         return lesLots;
     }
 
-    public ArrayList<Prix> getLesPrix() {
-        return lesPrix;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setSire(String sire) {
@@ -105,17 +110,17 @@ public class Cheval {
         this.uneMere = uneMere;
     }
 
-    public void setUnVendeur(Vendeur unVendeur) {
-        this.unVendeur = unVendeur;
+    public void setUnClient(Client unClient) {
+        this.unClient = unClient;
     }
 
     public void setLesLots(ArrayList<Lot> lesLots) {
         this.lesLots = lesLots;
     }
-
-    public void setLesPrix(ArrayList<Prix> lesPrix) {
-        this.lesPrix = lesPrix;
-    }
+    
+    
+    
+    
 
     
     
@@ -130,15 +135,6 @@ public class Cheval {
         return lesLots.size();
     }
     
-    public void addUnPrix(Prix unPrix){
-        if (lesPrix == null){
-            lesPrix = new ArrayList<Prix>();
-        }
-        lesPrix.add(unPrix);
-    }
     
-    public int getNbPrix(){
-        return lesPrix.size();
-    }
   
 }

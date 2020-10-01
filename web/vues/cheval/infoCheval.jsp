@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="modele.Cheval"%>
-<%@page import="modele.Vendeur"%>
+<%@page import="modele.Client"%>
 <%@page import="modele.TypeCheval"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@
         <table  class="table table-bordered table-striped table-condensed">  
             <thead>
                 <tr>             
-                    <th>Sire</th>
+                    <th>Id</th>
                     <th>Race</th>
                     <th>Père</th>
                     <th>Mère</th>
@@ -38,7 +38,7 @@
                     <%
                     
                         out.println("<tr><td>");
-                        out.println(unCheval.getSire());
+                        out.println(unCheval.getId());
                         out.println("</a></td>");
                         
                         out.println("<td>");
@@ -54,7 +54,7 @@
                         out.println("</td>");
                         
                         out.println("<td>");
-                        out.println(unCheval.getUnVendeur().getNom());
+                        out.println(unCheval.getUnClient().getNom());
                         out.println("</td>");
                         
                     %>
@@ -63,3 +63,4 @@
         </table>
     </body>
 </html>
+

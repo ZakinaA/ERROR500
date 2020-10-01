@@ -134,4 +134,5 @@ public class Client {
     public int getNbCategVente(){
         return lesCategVentes.size();
     }
+    
 }

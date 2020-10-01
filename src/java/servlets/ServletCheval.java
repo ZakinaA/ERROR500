@@ -84,10 +84,10 @@ public class ServletCheval extends HttpServlet {
         if(url.equals("/EquidaWeb20/ServletCheval/infoCheval"))
         {  
            System.out.println("DANS INFO CHEVAL");
-            String sireCheval = (String)request.getParameter("sireCheval");
+            String idCheval = (String)request.getParameter("idCheval");
            
             
-            Cheval unCheval = ChevalDAO.getInfoCheval(connection, sireCheval);
+            Cheval unCheval = ChevalDAO.getInfoCheval(connection, idCheval);
             request.setAttribute("punCheval", unCheval);
             getServletContext().getRequestDispatcher("/vues/cheval/infoCheval.jsp").forward(request, response);
         }

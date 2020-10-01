@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="modele.Lot"%>
+<%@page import="modele.Cheval"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -49,7 +50,7 @@
                         out.println(unLot.getUnCheval().getNom());
                         out.println("</td>");
                         
-                        out.println("<td><a href ='../ServletCheval/infoCheval?sireCheval="+ unLot.getUnCheval().getSire()+ "'>");
+                        out.println("<td><a href ='../ServletCheval/infoCheval?idCheval="+ unLot.getUnCheval().getId()+ "'>");
                         out.println("Informations Cheval");
                         out.println("</td>");
 

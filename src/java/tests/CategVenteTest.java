@@ -40,7 +40,7 @@ public class CategVenteTest {
     System.out.println("Il y a " + uneCategVente1.getLesClients().get(i).getNom());
         }
         
-        Lieu UnLieu1 = new Lieu(1, "", "", "");
+        Lieu UnLieu1 = new Lieu(1, "", 7, "");
                 
         Vente uneVente1 = new Vente(1, "Jelly Bay", "", UnLieu1, uneCategVente1);
         Vente uneVente2 = new Vente(2, "Mixing Brain", "", UnLieu1, uneCategVente1);
