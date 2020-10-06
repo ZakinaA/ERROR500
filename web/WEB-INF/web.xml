@@ -6,15 +6,15 @@
     </context-param>
     <context-param>
         <param-name>urlconnexionjdbc</param-name>
-        <param-value>jdbc:mysql://localhost:3306/equida20</param-value>
+        <param-value>jdbc:mysql://172.20.0.241:3306/ERROR500</param-value>
     </context-param>
     <context-param>
         <param-name>utilisateurjdbc</param-name>
-        <param-value>root</param-value>
+        <param-value>ADM_ERROR500</param-value>
     </context-param>
     <context-param>
         <param-name>motdepassejdbc</param-name>
-        <param-value/>
+        <param-value>mpError500</param-value>
     </context-param>
     <!--  écouteurs -->
     <listener>
@@ -39,6 +39,12 @@
         <servlet-class>servlets.ServletAdmin</servlet-class>
 
     </servlet>
+    
+    <servlet>
+        <servlet-name>ServletPays</servlet-name>
+        <servlet-class>servlets.ServletPays</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>ServletVentes</servlet-name>
         <url-pattern>/ServletVentes</url-pattern>
@@ -86,6 +92,17 @@
         <url-pattern>/ServletAdmin/consulterCategVente</url-pattern>
 
     </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ServletPays</servlet-name>
+        <url-pattern>/ServletPays</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPays</servlet-name>
+        <url-pattern>/ServletPays/ajouterPays</url-pattern>
+    </servlet-mapping>
+    
+    
     <session-config>
         <session-timeout>
             30

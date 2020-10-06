@@ -49,6 +49,30 @@ public class PaysDAO {
             //out.println("Erreur lors de l’établissement de la connexion");
         }
         return lesPays ;    
-    } 
+    }
+     
+     // Méthode permettant d'insérer un pays en base à partir de l'objet pays passé en paramètre
+    // Cette méthode renvoie l'objet pays
+    public static Pays ajouterPays(Connection connection, Pays unPays){      
+        try
+        {
+            //preparation de la requete
+            requete=connection.prepareStatement("INSERT INTO pays ( code, nom) VALUES (?,?)");
+            requete.setString(1, unPays.getCode());
+            requete.setString(2, unPays.getNom());
+            
+
+           /* Exécution de la requête */
+            requete.executeUpdate();
+            
+            
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return unPays ;    
+    }
     
 }
