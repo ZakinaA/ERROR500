@@ -74,7 +74,7 @@ public class ServletPays extends HttpServlet {
         
        String url = request.getRequestURI();
        
-       if(url.equals("/EquidaWeb20/ServletPays/ajouterPays"))
+       if(url.equals("/ERROR500/ServletPays/ajouterPays"))
         {                   
             this.getServletContext().getRequestDispatcher("/vues/pays/paysAjouter.jsp" ).forward( request, response );
         }

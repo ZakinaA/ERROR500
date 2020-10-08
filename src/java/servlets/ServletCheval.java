@@ -81,7 +81,7 @@ public class ServletCheval extends HttpServlet {
         
         // Récup et affichage par date décroissante de toutes les ventes   
           
-        if(url.equals("/EquidaWeb20/ServletCheval/infoCheval"))
+        if(url.equals("/ERROR500/ServletCheval/infoCheval"))
         {  
            System.out.println("DANS INFO CHEVAL");
             String idCheval = (String)request.getParameter("idCheval");

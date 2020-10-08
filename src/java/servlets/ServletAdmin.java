@@ -83,19 +83,19 @@ public class ServletAdmin extends HttpServlet {
             throws ServletException, IOException {
         String url = request.getRequestURI();
        
-       if(url.equals("/EquidaWeb20/ServletAdmin/ajouterCategVente"))
+       if(url.equals("/ERROR500/ServletAdmin/ajouterCategVente"))
         {     
           this.getServletContext().getRequestDispatcher("/vues/categVente/categVenteAjouter.jsp" ).forward( request, response );
         }
 
        
-       if(url.equals("/EquidaWeb20/ServletAdmin/AjouterLieu"))
+       if(url.equals("/ERROR500/ServletAdmin/AjouterLieu"))
        {
       this.getServletContext().getRequestDispatcher("/vues/Lieu/AjouterLieu.jsp" ).forward( request, response );
        
        }
 
-       if(url.equals("/EquidaWeb20/ServletAdmin/ajouterPays"))
+       if(url.equals("/ERROR500/ServletAdmin/ajouterPays"))
         {     
           this.getServletContext().getRequestDispatcher("/vues/pays/paysAjouter.jsp" ).forward( request, response );
         }
@@ -118,7 +118,7 @@ public class ServletAdmin extends HttpServlet {
        
          String url = request.getRequestURI();
         
-         if(url.equals("/EquidaWeb20/ServletAdmin/AjouterLieu")){
+         if(url.equals("/ERROR500/ServletAdmin/AjouterLieu")){
         LieuForm form = new LieuForm();
       
      Lieu unLieu = form.AjouterLieu(request);
@@ -138,7 +138,7 @@ public class ServletAdmin extends HttpServlet {
       }
         
          }
-        if(url.equals("/EquidaWeb20/ServletAdmin/ajouterCategVente")){
+        if(url.equals("/ERROR500/ServletAdmin/ajouterCategVente")){
 
             /* Préparation de l'objet formulaire */
            CategVenteForm form = new CategVenteForm();
@@ -172,7 +172,7 @@ public class ServletAdmin extends HttpServlet {
         
 
 
-        if(url.equals("/EquidaWeb20/ServletAdmin/ajouterPays")){
+        if(url.equals("/ERROR500/ServletAdmin/ajouterPays")){
 
             /* Préparation de l'objet formulaire */
            PaysForm form = new PaysForm();
