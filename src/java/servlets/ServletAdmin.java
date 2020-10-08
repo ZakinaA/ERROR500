@@ -7,10 +7,17 @@ package servlets;
 
 import database.CategVenteDAO;
 import database.ClientDAO;
+
 import database.LieuDAO;
+
+
+import formulaires.LieuForm;
+
+import database.PaysDAO;
 import database.VenteDAO;
 import formulaires.CategVenteForm;
-import formulaires.LieuForm;
+import formulaires.PaysForm;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -22,7 +29,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modele.CategVente;
 import modele.Client;
+
 import modele.Lieu;
+
+import modele.Pays;
+
 import modele.Vente;
 
 /**
@@ -76,12 +87,19 @@ public class ServletAdmin extends HttpServlet {
         {     
           this.getServletContext().getRequestDispatcher("/vues/categVente/categVenteAjouter.jsp" ).forward( request, response );
         }
+
        
        if(url.equals("/EquidaWeb20/ServletAdmin/AjouterLieu"))
        {
       this.getServletContext().getRequestDispatcher("/vues/Lieu/AjouterLieu.jsp" ).forward( request, response );
        
        }
+
+       if(url.equals("/EquidaWeb20/ServletAdmin/ajouterPays"))
+        {     
+          this.getServletContext().getRequestDispatcher("/vues/pays/paysAjouter.jsp" ).forward( request, response );
+        }
+       
     }
     
 
@@ -96,6 +114,7 @@ public class ServletAdmin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
        
          String url = request.getRequestURI();
         
@@ -120,22 +139,30 @@ public class ServletAdmin extends HttpServlet {
         
          }
         if(url.equals("/EquidaWeb20/ServletAdmin/ajouterCategVente")){
-        
-         /* Préparation de l'objet formulaire */
-        CategVenteForm form = new CategVenteForm();
-		
-        /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
-        CategVente uneCategVente = form.ajouterCategVente(request);
-        
-        /* Stockage du formulaire et de l'objet dans l'objet request */
-        request.setAttribute( "form", form );
-        request.setAttribute( "pCategVente", uneCategVente );
-		
-        if (form.getErreurs().isEmpty()){
-            // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
-            CategVenteDAO.ajouterCategVente(connection, uneCategVente);
-            this.getServletContext().getRequestDispatcher("/vues/categVente/categVenteConsulter.jsp" ).forward( request, response );
+
+            /* Préparation de l'objet formulaire */
+           CategVenteForm form = new CategVenteForm();
+
+           /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+           CategVente uneCategVente = form.ajouterCategVente(request);
+
+           /* Stockage du formulaire et de l'objet dans l'objet request */
+           request.setAttribute( "form", form );
+           request.setAttribute( "pCategVente", uneCategVente );
+
+           if (form.getErreurs().isEmpty()){
+               // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
+               CategVenteDAO.ajouterCategVente(connection, uneCategVente);
+               this.getServletContext().getRequestDispatcher("/vues/categVente/categVenteConsulter.jsp" ).forward( request, response );
+           }
+           else
+           { 
+                   // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+
+
+           }
         }
+
         else
         { 
 		// il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
@@ -143,7 +170,33 @@ public class ServletAdmin extends HttpServlet {
            
         } 
         
-    }
+
+
+        if(url.equals("/EquidaWeb20/ServletAdmin/ajouterPays")){
+
+            /* Préparation de l'objet formulaire */
+           PaysForm form = new PaysForm();
+
+           /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+           Pays unPays = form.ajouterPays(request);
+
+           /* Stockage du formulaire et de l'objet dans l'objet request */
+           request.setAttribute( "form", form );
+           request.setAttribute( "pPays", unPays );
+
+           if (form.getErreurs().isEmpty()){
+               // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
+               PaysDAO.ajouterPays(connection, unPays);
+               this.getServletContext().getRequestDispatcher("/vues/pays/paysConsulter.jsp" ).forward( request, response );
+           }
+           else
+           { 
+                   // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+
+
+           }
+        }
+    
     }
 
     /**
