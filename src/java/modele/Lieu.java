@@ -48,6 +48,7 @@ public class Lieu {
         return nbBoxes;
     }
 
+  
     public void setNbBoxes(int nbBoxes) {
         this.nbBoxes = nbBoxes;
     }

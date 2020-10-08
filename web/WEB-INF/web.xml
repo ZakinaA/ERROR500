@@ -84,9 +84,16 @@
     <servlet-mapping>
         <servlet-name>ServletAdmin</servlet-name>
         <url-pattern>/ServletAdmin/consulterCategVente</url-pattern>
-
-    </servlet-mapping>
-    <session-config>
+</servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>ServletAdmin</servlet-name>
+        <url-pattern>/ServletAdmin/AjouterLieu</url-pattern>
+</servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>ServletAdmin</servlet-name>
+        <url-pattern>/ServletAdmin/LieuConsulter</url-pattern>
+</servlet-mapping>
+<session-config>
         <session-timeout>
             30
         </session-timeout>

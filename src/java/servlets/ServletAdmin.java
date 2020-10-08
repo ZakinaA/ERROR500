@@ -7,8 +7,10 @@ package servlets;
 
 import database.CategVenteDAO;
 import database.ClientDAO;
+import database.LieuDAO;
 import database.VenteDAO;
 import formulaires.CategVenteForm;
+import formulaires.LieuForm;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -20,11 +22,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modele.CategVente;
 import modele.Client;
+import modele.Lieu;
 import modele.Vente;
 
 /**
  *
- * @author sio2
+ * @author Morel Alexis
  */
 public class ServletAdmin extends HttpServlet {
 
@@ -42,7 +45,7 @@ public class ServletAdmin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+             /*TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -73,6 +76,12 @@ public class ServletAdmin extends HttpServlet {
         {     
           this.getServletContext().getRequestDispatcher("/vues/categVente/categVenteAjouter.jsp" ).forward( request, response );
         }
+       
+       if(url.equals("/EquidaWeb20/ServletAdmin/AjouterLieu"))
+       {
+      this.getServletContext().getRequestDispatcher("/vues/Lieu/AjouterLieu.jsp" ).forward( request, response );
+       
+       }
     }
     
 
@@ -87,7 +96,31 @@ public class ServletAdmin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-               
+       
+         String url = request.getRequestURI();
+        
+         if(url.equals("/EquidaWeb20/ServletAdmin/AjouterLieu")){
+        LieuForm form = new LieuForm();
+      
+     Lieu unLieu = form.AjouterLieu(request);
+      
+      request.setAttribute("form", form);
+      request.setAttribute("pLieu", unLieu);
+      
+      
+      if(form.getErreurs().isEmpty()){
+          
+             LieuDAO.AjouterLieu(connection, unLieu);
+          this.getServletContext().getRequestDispatcher("/vues/Lieu/LieuConsulter.jsp" ).forward( request, response );
+      }
+      else
+      {
+          
+      }
+        
+         }
+        if(url.equals("/EquidaWeb20/ServletAdmin/ajouterCategVente")){
+        
          /* Préparation de l'objet formulaire */
         CategVenteForm form = new CategVenteForm();
 		
@@ -108,8 +141,9 @@ public class ServletAdmin extends HttpServlet {
 		// il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
                        
            
-        }
-    
+        } 
+        
+    }
     }
 
     /**
