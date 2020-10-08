@@ -100,6 +100,13 @@ public class ServletAdmin extends HttpServlet {
           this.getServletContext().getRequestDispatcher("/vues/pays/paysAjouter.jsp" ).forward( request, response );
         }
        
+       if(url.equals("/ERROR500/ServletAdmin/listerLesPays"))
+        {  
+            ArrayList<Pays> lesPays = PaysDAO.getLesPays(connection);
+            request.setAttribute("pLesPays", lesPays);
+            getServletContext().getRequestDispatcher("/vues/pays/listerLesPays.jsp").forward(request, response);
+        }
+       
     }
     
 
