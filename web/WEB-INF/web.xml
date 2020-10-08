@@ -114,6 +114,12 @@
             <servlet-name>ServletAdmin</servlet-name>
             <url-pattern>/ServletAdmin/consulterPays</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAdmin</servlet-name>
+        <url-pattern>/ServletAdmin/listerLesLieux</url-pattern>
+    </servlet-mapping>
+    
+    
 <session-config>
 
     <session-timeout>

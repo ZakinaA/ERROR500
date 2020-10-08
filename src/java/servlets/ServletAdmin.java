@@ -107,6 +107,15 @@ public class ServletAdmin extends HttpServlet {
             getServletContext().getRequestDispatcher("/vues/pays/listerLesPays.jsp").forward(request, response);
         }
        
+        if(url.equals("/ERROR500/ServletAdmin/listerLesLieux"))
+       {
+          ArrayList<Lieu> lesLieux = LieuDAO.getLesLieux(connection);
+          request.setAttribute("pLesLieux", lesLieux);
+           getServletContext().getRequestDispatcher("/vues/Lieu/listerLesLieux.jsp").forward(request, response);
+       }
+       
+       
+       
     }
     
 
