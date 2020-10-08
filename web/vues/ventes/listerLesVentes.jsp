@@ -1,5 +1,5 @@
-<%-- 
-    Document   : Lister les Ventes 
+<%--
+    Document   : Lister les Ventes
     Created on : 22/06/2017, 07:43
     Author     : Zakina
 --%>
@@ -11,24 +11,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+        <link rel="stylesheet" href="../css/style.css">
         <title>LISTE DES VENTES</title>
     </head>
     <body>
-        <h1>LISTE DES VENTES</h1>
+        <h1 class="Titre">LISTE DES VENTES</h1>
          <%
         ArrayList<Vente> lesVentes = (ArrayList)request.getAttribute("pLesVentes");
         %>
-        <table  class="table table-bordered table-striped table-condensed">  
+        <table  class="table table-bordered table-striped table-condensed" border="2">
             <thead>
-                <tr>             
+                <tr>
                     <th>id</th>
                     <th>nom</th>
                     <th>date début</th>
                     <th>catégorie</th>
                     <th>ville</th>
                     <th>nb boxes</th>
-                    <th></th>
+                    <th>Liste des clients</th>
+                    <th>Liste des courriels</th>
+                    <th>Liste des lots</th>
             <br>
             <br>
                 </tr>
@@ -38,7 +40,7 @@
                     <%
                     for(int i = 0; i < lesVentes.size();i++)
                     {
-                        
+
                         Vente uneVente = lesVentes.get(i);
                         out.println("<tr><td>");
                         out.println(uneVente.getId());
@@ -55,28 +57,28 @@
                         out.println("<td>");
                         out.println(uneVente.getUneCategVente().getLibelle());
                         out.println("</td>");
-                        
+
                         out.println("<td>");
                         out.println(uneVente.getUnLieu().getVille());
                         out.println("</td>");
-                        
+
                         out.println("<td>");
                         out.println(uneVente.getUnLieu().getNbBoxes());
                         out.println("</td>");
-                        
+
                         out.println("<td><a href ='../ServletVentes/listerLesClients?codeCat="+ uneVente.getUneCategVente().getCode()+ "'>");
                         out.println("Lister les clients interessés");
                         out.println("</td>");
-                        
+
                         out.println("<td><a href ='../ServletVentes/listerLesCourriels?idVente="+ uneVente.getId()+ "'>");
                         out.println("Lister les courriels");
                         out.println("</td>");
-                        
+
                         out.println("<td><a href ='../ServletVentes/listerLesLots?idVente="+ uneVente.getId()+ "'>");
                         out.println("Lister les lots interessés");
                         out.println("</td>");
-                        
-                        
+
+
                     }
                     %>
                 </tr>
