@@ -48,7 +48,7 @@ public class VenteDAO {
         try
         {
             //preparation de la requete     
-            requete=connection.prepareStatement("select DISTINCT * from vente, CategVente, Lieu where codeCategVente=code and CodeLieu=Lieu.id order by dateDebut desc");          
+            requete=connection.prepareStatement("select DISTINCT * from vente, categvente, lieu where codeCategVente=code and CodeLieu=lieu.id order by dateDebut desc");          
             //executer la requete
             rs=requete.executeQuery();
             System.out.println("requete"+requete.toString());
@@ -91,7 +91,7 @@ public class VenteDAO {
         {
             //preparation de la requete     
             //codeCateg="ETE";
-            requete=connection.prepareStatement("SELECT c.*, p.nom as nomPays, cv.libelle FROM client c, pays p, clientcategvente cc, categVente cv where c.codePays=p.code and cc.codeClient=c.id and cv.code=cc.codeCategVente and codeCategVente= ? ");
+            requete=connection.prepareStatement("SELECT c.*, p.nom as nomPays, cv.libelle FROM client c, pays p, clientcategvente cc, categvente cv where c.codePays=p.code and cc.codeClient=c.id and cv.code=cc.codeCategVente and codeCategVente= ? ");
             requete.setString(1, codeCateg);
             //executer la requete
             rs=requete.executeQuery();
