@@ -43,7 +43,9 @@ public class ChevalDAO {
 "AND cmere.id=c.Mère\n" +
 "AND cpere.id=c.Père\n" +
 "AND c.idClient=cl.id\n" +
-"AND c.id = ?;");
+"AND c.id = ?\n" +
+"AND (c.archive IS NULL OR c.archive=0);");
+
             requete.setString(1, idCheval);
             //executer la requete
             rs=requete.executeQuery();

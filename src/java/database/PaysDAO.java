@@ -30,7 +30,7 @@ public class PaysDAO {
         try
         {
             //preparation de la requete     
-            requete=connection.prepareStatement("select * from pays");
+            requete=connection.prepareStatement("select * from pays where archive IS NULL OR archive=0");
             
             //executer la requete
             rs=requete.executeQuery();
@@ -50,6 +50,30 @@ public class PaysDAO {
         }
         return lesPays ;    
     }
+     public static Pays getLePays(Connection connection, String code){      
+        Pays lePays = new Pays();
+        try
+        {
+            //preparation de la requete     
+            requete=connection.prepareStatement("select * from pays where code=? AND( archive IS NULL OR archive=0)");
+            requete.setString(1, code);
+            
+            //executer la requete
+            rs=requete.executeQuery();
+            
+            //On hydrate l'objet métier Client avec les résultats de la requête
+            while ( rs.next() ) {  
+                lePays.setCode(rs.getString("code"));
+                lePays.setNom(rs.getString("nom"));
+            }
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return lePays ;    
+    }
      
      // Méthode permettant d'insérer un pays en base à partir de l'objet pays passé en paramètre
     // Cette méthode renvoie l'objet pays
@@ -60,6 +84,28 @@ public class PaysDAO {
             requete=connection.prepareStatement("INSERT INTO pays ( code, nom) VALUES (?,?)");
             requete.setString(1, unPays.getCode());
             requete.setString(2, unPays.getNom());
+            
+
+           /* Exécution de la requête */
+            requete.executeUpdate();
+            
+            
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return unPays ;    
+    }
+    
+    public static Pays modifierPays(Connection connection, Pays unPays){      
+        try
+        {
+            //preparation de la requete
+            requete=connection.prepareStatement("UPDATE pays SET nom=? WHERE code=?");
+            requete.setString(2, unPays.getCode());
+            requete.setString(1, unPays.getNom());
             
 
            /* Exécution de la requête */

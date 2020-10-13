@@ -48,7 +48,7 @@ public class VenteDAO {
         try
         {
             //preparation de la requete     
-            requete=connection.prepareStatement("select DISTINCT * from vente, categvente, lieu where codeCategVente=code and CodeLieu=lieu.id order by dateDebut desc");          
+            requete=connection.prepareStatement("select DISTINCT * from vente, categvente, lieu where codeCategVente=code and CodeLieu=lieu.id and (archive IS NULL OR archive=0) order by dateDebut desc");          
             //executer la requete
             rs=requete.executeQuery();
             System.out.println("requete"+requete.toString());
@@ -91,7 +91,7 @@ public class VenteDAO {
         {
             //preparation de la requete     
             //codeCateg="ETE";
-            requete=connection.prepareStatement("SELECT c.*, p.nom as nomPays, cv.libelle FROM client c, pays p, clientcategvente cc, categvente cv where c.codePays=p.code and cc.codeClient=c.id and cv.code=cc.codeCategVente and codeCategVente= ? ");
+            requete=connection.prepareStatement("SELECT c.*, p.nom as nomPays, cv.libelle FROM client c, pays p, clientcategvente cc, categvente cv where c.codePays=p.code and cc.codeClient=c.id and cv.code=cc.codeCategVente and codeCategVente= ? and (archive IS NULL OR archive=0)");
             requete.setString(1, codeCateg);
             //executer la requete
             rs=requete.executeQuery();
@@ -136,7 +136,7 @@ public class VenteDAO {
         {
             //preparation de la requete     
             //codeCateg="ETE";
-            requete=connection.prepareStatement("SELECT c.*, v.nom as nomVente FROM courriel c, vente v WHERE c.codeVente=v.id and codeVente=? ");
+            requete=connection.prepareStatement("SELECT c.*, v.nom as nomVente FROM courriel c, vente v WHERE c.codeVente=v.id and codeVente=? and (archive IS NULL OR archive=0) ");
             requete.setString(1, idVente);
             //executer la requete
             
@@ -176,7 +176,7 @@ public class VenteDAO {
         {
             //preparation de la requete     
             //codeCateg="ETE";
-            requete=connection.prepareStatement("SELECT l.*, c.id, c.nom, v.nom as nomVente FROM lot l, vente v, cheval c WHERE l.codeVente=v.id and l.idcheval=c.id and codeVente=? ");
+            requete=connection.prepareStatement("SELECT l.*, c.id, c.nom, v.nom as nomVente FROM lot l, vente v, cheval c WHERE l.codeVente=v.id and l.idcheval=c.id and codeVente=? and (archive IS NULL OR archive=0)");
             requete.setString(1, idVente);
             //executer la requete
             
