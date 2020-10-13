@@ -66,9 +66,14 @@
         <url-pattern>/ServletVentes/listerLesLots</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>ServletAdmin</servlet-name>
+        <url-pattern>/ServletAdmin/listerLesPays</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ServletClient</servlet-name>
         <url-pattern>/ServletClient/ajouterClient</url-pattern>
     </servlet-mapping>
+    
 
     <servlet-mapping>
         <servlet-name>ServletCheval</servlet-name>
@@ -109,6 +114,12 @@
             <servlet-name>ServletAdmin</servlet-name>
             <url-pattern>/ServletAdmin/consulterPays</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAdmin</servlet-name>
+        <url-pattern>/ServletAdmin/listerLesLieux</url-pattern>
+    </servlet-mapping>
+    
+    
 <session-config>
 
     <session-timeout>
