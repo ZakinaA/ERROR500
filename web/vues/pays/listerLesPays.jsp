@@ -24,6 +24,7 @@
                 <tr>
                     <th>code</th>
                     <th>nom</th>
+                    <th>modifier</th>
             <br>
             <br>
                 </tr>
@@ -41,6 +42,10 @@
 
                         out.println("<td>");
                         out.println(unPays.getNom());
+                        out.println("</td>");
+                        
+                        out.println("<td><a href ='../ServletAdmin/modifierPays?code="+ unPays.getCode()+ "'>");
+                        out.println("Modifier");
                         out.println("</td>");
                         
                     }
