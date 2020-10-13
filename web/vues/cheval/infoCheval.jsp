@@ -28,10 +28,12 @@
                     <th>Père</th>
                     <th>Mère</th>
                     <th>Propriétaire</th>
+                    
                     <th></th>
             <br>
             <br>
                 </tr>
+                
             </thead>
             <tbody>
                 <tr>
@@ -40,6 +42,8 @@
                         out.println("<tr><td>");
                         out.println(unCheval.getId());
                         out.println("</a></td>");
+                        
+                       
 
                         out.println("<td>");
                         out.println(unCheval.getUnTypeCheval().getLibelle());
@@ -56,10 +60,37 @@
                         out.println("<td>");
                         out.println(unCheval.getUnClient().getNom());
                         out.println("</td>");
-
+                        
                     %>
-                </tr>
+               
             </tbody>
         </table>
+                    
+        <table  class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>Photo du Cheval</th>
+                    
+            <br>
+            <br>
+                </tr>
+                
+            </thead>
+            <tbody>
+                <tr>
+                    <%
+                        out.println("<td>");
+                    %>
+                <img src="<%out.println(unCheval.getCheminPhoto());%>"
+                             width="500"
+                             height="350">
+                    <%
+                        out.println("</td>");
+                    %>
+               
+            </tbody>
+        </table>           
+                
+        
     </body>
 </html>
