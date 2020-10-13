@@ -30,7 +30,7 @@ public class CategVenteDAO {
         try
         {
             //preparation de la requete     
-            requete=connection.prepareStatement("select * from categvente where archive IS NULL OR archive=0");
+            requete=connection.prepareStatement("select * from categvente where categvente.archive IS NULL OR categvente.archive=0");
             
             //executer la requete
             rs=requete.executeQuery();

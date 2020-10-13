@@ -60,7 +60,7 @@ public class LieuDAO {
           
         {
             //preparation de la requete  
-            requete=connection.prepareStatement("select * from lieu where archive IS NULL OR archive=0");
+            requete=connection.prepareStatement("select * from lieu where lieu.archive IS NULL OR lieu.archive=0");
             
             rs=requete.executeQuery();
             //On hydrate l'objet métier Client avec les résultats de la requête

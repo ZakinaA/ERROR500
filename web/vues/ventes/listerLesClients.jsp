@@ -24,7 +24,7 @@
                 <tr>             
                     <th>id</th>
                     <th>nom</th>
-                    <th>prenomt</th>
+                    <th>prenom</th>
                     <th>pays</th>                
             <br>
             <br>
