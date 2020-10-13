@@ -26,7 +26,7 @@ public class ChevalDAO {
     static PreparedStatement requete=null;
     static ResultSet rs=null;
     
-    /* @author Zakina - 22/06/2017
+    /* @author sio2 - 13/10/2020
     /* Méthode permettant de lister toutes les ventes enregistrées en base, triées par date décroissante.
     /* Pour chaque vente, on récupère aussi sa catégorie.
     /* La liste des vente est stockée dans une ArrayList
