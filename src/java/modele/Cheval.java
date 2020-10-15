@@ -17,6 +17,7 @@ public class Cheval {
     private String nom;
     private String sexe;
     private String prixDepart;
+    private String CheminPhoto;
     private TypeCheval unTypeCheval;
     private Cheval unPere;
     private Cheval uneMere;
@@ -26,12 +27,13 @@ public class Cheval {
     public Cheval() {
     }
 
-    public Cheval(int id, String sire, String nom, String sexe, String prixDepart, TypeCheval unTypeCheval, Cheval unPere, Cheval uneMere, Client unClient) {
+    public Cheval(int id, String sire, String nom, String sexe, String prixDepart, String CheminPhoto, TypeCheval unTypeCheval, Cheval unPere, Cheval uneMere, Client unClient) {
         this.id = id;
         this.sire = sire;
         this.nom = nom;
         this.sexe = sexe;
         this.prixDepart = prixDepart;
+        this.CheminPhoto = CheminPhoto;
         this.unTypeCheval = unTypeCheval;
         this.unPere = unPere;
         this.uneMere = uneMere;
@@ -56,6 +58,10 @@ public class Cheval {
 
     public String getPrixDepart() {
         return prixDepart;
+    }
+
+    public String getCheminPhoto() {
+        return CheminPhoto;
     }
 
     public TypeCheval getUnTypeCheval() {
@@ -98,6 +104,10 @@ public class Cheval {
         this.prixDepart = prixDepart;
     }
 
+    public void setCheminPhoto(String CheminPhoto) {
+        this.CheminPhoto = CheminPhoto;
+    }
+
     public void setUnTypeCheval(TypeCheval unTypeCheval) {
         this.unTypeCheval = unTypeCheval;
     }
@@ -117,7 +127,7 @@ public class Cheval {
     public void setLesLots(ArrayList<Lot> lesLots) {
         this.lesLots = lesLots;
     }
-    
+
     
     
     

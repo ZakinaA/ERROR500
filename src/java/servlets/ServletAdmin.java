@@ -100,6 +100,30 @@ public class ServletAdmin extends HttpServlet {
           this.getServletContext().getRequestDispatcher("/vues/pays/paysAjouter.jsp" ).forward( request, response );
         }
        
+       if(url.equals("/ERROR500/ServletAdmin/modifierPays"))
+        {
+          String code = (String)request.getParameter("code");
+          Pays unPays = PaysDAO.getLePays(connection,code);
+          request.setAttribute("pLePays", unPays);
+          this.getServletContext().getRequestDispatcher("/vues/pays/paysModifier.jsp" ).forward( request, response );
+        }
+       
+       if(url.equals("/ERROR500/ServletAdmin/listerLesPays"))
+        {  
+            ArrayList<Pays> lesPays = PaysDAO.getLesPays(connection);
+            request.setAttribute("pLesPays", lesPays);
+            getServletContext().getRequestDispatcher("/vues/pays/listerLesPays.jsp").forward(request, response);
+        }
+       
+        if(url.equals("/ERROR500/ServletAdmin/listerLesLieux"))
+       {
+          ArrayList<Lieu> lesLieux = LieuDAO.getLesLieux(connection);
+          request.setAttribute("pLesLieux", lesLieux);
+           getServletContext().getRequestDispatcher("/vues/Lieu/listerLesLieux.jsp").forward(request, response);
+       }
+       
+       
+       
     }
     
 
@@ -187,6 +211,31 @@ public class ServletAdmin extends HttpServlet {
            if (form.getErreurs().isEmpty()){
                // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
                PaysDAO.ajouterPays(connection, unPays);
+               this.getServletContext().getRequestDispatcher("/vues/pays/paysConsulter.jsp" ).forward( request, response );
+           }
+           else
+           { 
+                   // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+
+
+           }
+        }
+        
+        if(url.equals("/ERROR500/ServletAdmin/modifierPays")){
+
+            /* Préparation de l'objet formulaire */
+           PaysForm form = new PaysForm();
+
+           /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+           Pays unPays = form.ajouterPays(request);
+
+           /* Stockage du formulaire et de l'objet dans l'objet request */
+           request.setAttribute( "form", form );
+           request.setAttribute( "pPays", unPays );
+
+           if (form.getErreurs().isEmpty()){
+               // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
+               PaysDAO.modifierPays(connection, unPays);
                this.getServletContext().getRequestDispatcher("/vues/pays/paysConsulter.jsp" ).forward( request, response );
            }
            else

@@ -26,7 +26,7 @@ public class ChevalDAO {
     static PreparedStatement requete=null;
     static ResultSet rs=null;
     
-    /* @author Zakina - 22/06/2017
+    /* @author sio2 - 13/10/2020
     /* Méthode permettant de lister toutes les ventes enregistrées en base, triées par date décroissante.
     /* Pour chaque vente, on récupère aussi sa catégorie.
     /* La liste des vente est stockée dans une ArrayList
@@ -37,7 +37,15 @@ public class ChevalDAO {
         {
             //preparation de la requete     
             //codeCateg="ETE";
-            requete=connection.prepareStatement("SELECT c.*, tc.libelle, cl.nom FROM cheval c, typecheval tc, client cl where c.idType=tc.id  and c.idClient=cl.id and c.id = ?");
+            requete=connection.prepareStatement("SELECT c.*, c.photo, tc.libelle, cl.nom as nom_client, cpere.nom as nom_pere, cmere.nom as nom_mere\n" +
+"FROM cheval c, cheval cmere, cheval cpere, typecheval tc, client cl\n" +
+"WHERE c.idType=tc.id\n" +
+"AND cmere.id=c.Mère\n" +
+"AND cpere.id=c.Père\n" +
+"AND c.idClient=cl.id\n" +
+"AND c.id = ?\n" +
+"AND (c.archive IS NULL OR c.archive=0);");
+
             requete.setString(1, idCheval);
             //executer la requete
             rs=requete.executeQuery();
@@ -48,18 +56,20 @@ public class ChevalDAO {
               
                 unCheval.setId(rs.getInt("c.id"));
                 
+                unCheval.setCheminPhoto(rs.getString("c.photo"));
+                
                 TypeCheval unTypeCheval = new TypeCheval();
                 unTypeCheval.setLibelle(rs.getString("tc.libelle"));
                 
                 
                 Cheval unChevalPere = new Cheval();
-                unChevalPere.setNom(rs.getString("Père"));
+                unChevalPere.setNom(rs.getString("nom_pere"));
                 
                 Cheval unChevalMere = new Cheval();
-                unChevalMere.setNom(rs.getString("Mère"));
+                unChevalMere.setNom(rs.getString("nom_mere"));
                 
                 Client unClient = new Client();
-                unClient.setNom(rs.getString("cl.nom"));
+                unClient.setNom(rs.getString("nom_client"));
                 
                 unCheval.setUnPere(unChevalPere);
                 unCheval.setUneMere(unChevalMere);
