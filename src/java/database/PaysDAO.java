@@ -30,7 +30,7 @@ public class PaysDAO {
         try
         {
             //preparation de la requete     
-            requete=connection.prepareStatement("select * from pays where pays.archive IS NULL OR pays.archive=0");
+            requete=connection.prepareStatement("select * from pays where pays.archive IS NULL OR pays.archive=0\"");
             
             //executer la requete
             rs=requete.executeQuery();
@@ -55,7 +55,7 @@ public class PaysDAO {
         try
         {
             //preparation de la requete     
-            requete=connection.prepareStatement("select * from pays where code=? AND( pays.archive IS NULL OR pays.archive=0)");
+            requete=connection.prepareStatement("select * from pays where code=? where code=? AND( pays.archive IS NULL OR pays.archive=0)");
             requete.setString(1, code);
             
             //executer la requete

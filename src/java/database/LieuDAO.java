@@ -36,7 +36,8 @@ public class LieuDAO {
             requete.setInt(1, unLieu.getId());
             requete.setString(2, unLieu.getVille());
            requete.setInt(3, unLieu.getNbBoxes());
-            requete.setString(4, unLieu.getCommentaires());
+            requete.setString(4,unLieu.getCommentaires());
+            
             
   /* Exécution de la requête */
            
@@ -60,7 +61,7 @@ public class LieuDAO {
           
         {
             //preparation de la requete  
-            requete=connection.prepareStatement("select * from lieu where lieu.archive IS NULL OR lieu.archive=0");
+            requete=connection.prepareStatement("select * from lieu where lieu.archive IS NULL OR lieu.archive=0\"");
             
             rs=requete.executeQuery();
             //On hydrate l'objet métier Client avec les résultats de la requête
@@ -86,6 +87,62 @@ public class LieuDAO {
             
     }
     
+    public static Lieu getleLieu(Connection connection, String id){  
+        Lieu leLieu = new Lieu();
+        try
+        {
+            //preparation de la requete
+        
+            requete=connection.prepareStatement("select * from lieu where id=?");
+         requete.setString(1, id);
+         System.out.println("REQUETE " + requete);
+         //executer la requete
+         rs=requete.executeQuery();
+         
+       
+          while ( rs.next() ) {  
+               leLieu.setId(rs.getInt("id"));
+                leLieu.setVille(rs.getString("ville"));
+                leLieu.setNbBoxes(rs.getInt("nbBoxes"));
+                leLieu.setCommentaires(rs.getString("commentaire"));
+            }
+         
+         
+      
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return leLieu;   
+        
+  }
     
+     public static Lieu modifierLieu(Connection connection, Lieu unLieu){      
+        try
+        {
+            //preparation de la requete
+            requete=connection.prepareStatement("UPDATE lieu SET ville=?, nbBoxes=?, commentaire=? WHERE id=?");
+            System.out.println("LIEUDAO requete="+requete);
+            
+            requete.setString(1, unLieu.getVille());
+            requete.setInt(2, unLieu.getNbBoxes());
+            requete.setString(3, unLieu.getCommentaires());
+            requete.setInt(4,unLieu.getId());
+            
+
+          
+            requete.executeUpdate();
+            
+            
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return unLieu ;    
+    }
     
 }

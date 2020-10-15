@@ -48,7 +48,7 @@ public class VenteDAO {
         try
         {
             //preparation de la requete     
-            requete=connection.prepareStatement("select DISTINCT * from vente, categvente, lieu where codeCategVente=code and CodeLieu=lieu.id and (vente.archive IS NULL OR vente.archive=0) order by dateDebut desc");          
+            requete=connection.prepareStatement("select DISTINCT * from vente, categvente, lieu where codeCategVente=code and CodeLieu=lieu.id");          
             //executer la requete
             rs=requete.executeQuery();
             System.out.println("requete"+requete.toString());

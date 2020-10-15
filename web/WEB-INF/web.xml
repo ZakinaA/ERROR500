@@ -6,15 +6,15 @@
     </context-param>
     <context-param>
         <param-name>urlconnexionjdbc</param-name>
-        <param-value>jdbc:mysql://172.20.0.241:3306/ERROR500</param-value>
+        <param-value>jdbc:mysql://localhost/equida20</param-value>
     </context-param>
     <context-param>
         <param-name>utilisateurjdbc</param-name>
-        <param-value>ADM_ERROR500</param-value>
+        <param-value>root</param-value>
     </context-param>
     <context-param>
         <param-name>motdepassejdbc</param-name>
-        <param-value>mpError500</param-value>
+        <param-value></param-value>
     </context-param>
     <!--  écouteurs -->
     <listener>
@@ -122,6 +122,11 @@
         <servlet-name>ServletAdmin</servlet-name>
         <url-pattern>/ServletAdmin/listerLesLieux</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAdmin</servlet-name>
+        <url-pattern>/ServletAdmin/lieuModifier</url-pattern>
+    </servlet-mapping>
+    
     
     
 <session-config>

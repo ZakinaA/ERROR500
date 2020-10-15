@@ -53,10 +53,10 @@ public class LieuForm {
       
         Lieu unLieu  = new Lieu();
          
-       String id = getDataForm(request, "id");
+      String id = getDataForm(request, "id");
         String ville = getDataForm( request, "ville");
    String nbBoxes = getDataForm(request,"nbBoxes");
-        String Commentaire = getDataForm(request,"Commentaire");
+        String Commentaire = getDataForm(request,"commentaire");
         
        
     
@@ -67,7 +67,7 @@ public class LieuForm {
        unLieu.setNbBoxes(Integer.parseInt(nbBoxes));
         unLieu.setCommentaires(Commentaire);
         
-        
+   
                
        
         return unLieu;
