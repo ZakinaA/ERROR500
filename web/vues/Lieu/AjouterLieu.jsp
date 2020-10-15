@@ -20,7 +20,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-             <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#">
                <img src="../vues/images/logo.jpg" width="50" height="40" style="display: inline-block;">
             </a>
   <a class="navbar-brand" href="#">Equida</a>
@@ -33,8 +33,15 @@
       <li class="nav-item active">
         <a class="nav-link" href="../index.html">Accueil <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="../ServletVentes/listerLesVentes">Lister les ventes</a>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Listes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="../ServletVentes/listerLesVentes">Lister Les Ventes</a>
+          <a class="dropdown-item" href="../ServletAdmin/listerLesLieux">Lister Les Lieux</a>
+        </div>
+      </li>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,26 +53,6 @@
           <a class="dropdown-item" href="../ServletAdmin/ajouterCategVente">Ajouter Catégorie</a>
           <a class="dropdown-item" href="../ServletAdmin/AjouterLieu">Ajouter Lieu</a>
           <a class="dropdown-item" href="../ServletAdmin/ajouterPays">Ajouter Pays</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Modifier
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="?">Modifier Client</a>
-          <a class="dropdown-item" href="?">Modifier Cheval</a>
-          <a class="dropdown-item" href="?">Modifier Catégorie</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Supprimer
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="?">Supprimer Client</a>
-          <a class="dropdown-item" href="?">Supprimer Cheval</a>
-          <a class="dropdown-item" href="?">Supprimer Catégorie</a>
         </div>
       </li>
     </ul>
