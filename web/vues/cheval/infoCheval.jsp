@@ -24,6 +24,9 @@
             <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Sire</th>
+                    <th>Nom</th>
+                    <th>Sexe</th>
                     <th>Race</th>
                     <th>Père</th>
                     <th>Mère</th>
@@ -41,21 +44,46 @@
 
                         out.println("<tr><td>");
                         out.println(unCheval.getId());
-                        out.println("</a></td>");
+                        out.println("</td>");
                         
-                       
-
+                        out.println("<td>");
+                        out.println(unCheval.getSire());
+                        out.println("</td>");
+                        
+                        out.println("<td>");
+                        out.println(unCheval.getNom());
+                        out.println("</td>");
+                        
+                        out.println("<td>");
+                        out.println(unCheval.getSexe());
+                        out.println("</td>");
+                        
                         out.println("<td>");
                         out.println(unCheval.getUnTypeCheval().getLibelle());
                         out.println("</td>");
-
+                        
+                        
+                        if (unCheval.getUnPere().getId() != 999){
+                            out.println("<td><a href ='../ServletCheval/infoCheval?idCheval="+ unCheval.getUnPere().getId()+ "'>");
+                        out.println(unCheval.getUnPere().getNom());
+                        out.println("</td>");
+                        }
+                        else{
                         out.println("<td>");
                         out.println(unCheval.getUnPere().getNom());
                         out.println("</td>");
-
+                        }
+                        
+                        if (unCheval.getUneMere().getId() != 999){
+                            out.println("<td><a href ='../ServletCheval/infoCheval?idCheval="+ unCheval.getUneMere().getId()+ "'>");
+                        out.println(unCheval.getUneMere().getNom());
+                        out.println("</td>");
+                        }
+                        else{
                         out.println("<td>");
                         out.println(unCheval.getUneMere().getNom());
                         out.println("</td>");
+                        }
 
                         out.println("<td>");
                         out.println(unCheval.getUnClient().getNom());

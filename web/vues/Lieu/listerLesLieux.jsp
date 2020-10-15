@@ -98,6 +98,11 @@
                             out.println("<td>");
                             out.println(unLieu.getCommentaires());
                             out.println("</td>");
+                            
+                              out.println("<td><a href ='../ServletAdmin/lieuModifier?idLieu="+ unLieu.getId()+ "'>");
+                        out.println("Modifier lieu");
+                        out.println("</td>");
+
                         }
         
         

@@ -6,7 +6,7 @@
     </context-param>
     <context-param>
         <param-name>urlconnexionjdbc</param-name>
-        <param-value>jdbc:mysql://172.20.0.241:3306/ERROR500</param-value>
+        <param-value>jdbc:mysql://172.20.0.241/ERROR500</param-value>
     </context-param>
     <context-param>
         <param-name>utilisateurjdbc</param-name>
@@ -122,6 +122,11 @@
         <servlet-name>ServletAdmin</servlet-name>
         <url-pattern>/ServletAdmin/listerLesLieux</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAdmin</servlet-name>
+        <url-pattern>/ServletAdmin/lieuModifier</url-pattern>
+    </servlet-mapping>
+    
     
     
 <session-config>

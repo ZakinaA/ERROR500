@@ -72,7 +72,9 @@
         <label for="Nombre box"> Nombre box </label>
                 <input id="Nombre box" type="text" name="nbBoxes"  size="30" maxlength="50">
                 </br>
-        <label for="Commentaire"> Commentaire </label>
+
+        <label for="Commentaire"> Commentaire: </label>
+
                 <input id="Commentaire" type="text" name="Commentaire"  size="50" maxlength="50">
                 </br>
         
