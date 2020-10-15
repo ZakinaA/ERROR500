@@ -62,7 +62,7 @@
                         out.println(unCheval.getUnTypeCheval().getLibelle());
                         out.println("</td>");
                         
-                        System.out.println("Id cheval pere = " + unCheval.getUnPere().getId());
+                        
                         if (unCheval.getUnPere().getId() != 999){
                             out.println("<td><a href ='../ServletCheval/infoCheval?idCheval="+ unCheval.getUnPere().getId()+ "'>");
                         out.println(unCheval.getUnPere().getNom());
