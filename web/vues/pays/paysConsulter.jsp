@@ -21,7 +21,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">
-               <img src="vues/images/logo.jpg" width="50" height="40" style="display: inline-block;">
+               <img src="../vues/images/logo.jpg" width="50" height="40" style="display: inline-block;">
             </a>
   <a class="navbar-brand" href="#">Equida</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,15 +31,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">Accueil <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.html">Accueil <span class="sr-only">(current)</span></a>
       </li>
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Listes
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="ServletVentes/listerLesVentes">Lister Les Ventes</a>
-          <a class="dropdown-item" href="ServletAdmin/listerLesLieux">Lister Les Lieux</a>
+          <a class="dropdown-item" href="../ServletVentes/listerLesVentes">Lister Les Ventes</a>
+          <a class="dropdown-item" href="../ServletAdmin/listerLesLieux">Lister Les Lieux</a>
+          <a class="dropdown-item" href="../ServletAdmin/listerLesPays">Lister Les Pays</a>
         </div>
       </li>
       </li>
@@ -48,11 +49,11 @@
           Ajouter
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="ServletClient/ajouterClient">Ajouter Client</a>
-          <a class="dropdown-item" href="ServletCheval/ajouterCheval">Ajouter Cheval</a>
-          <a class="dropdown-item" href="ServletAdmin/ajouterCategVente">Ajouter Catégorie</a>
-          <a class="dropdown-item" href="ServletAdmin/AjouterLieu">Ajouter Lieu</a>
-          <a class="dropdown-item" href="ServletAdmin/ajouterPays">Ajouter Pays</a>
+          <a class="dropdown-item" href="../ServletClient/ajouterClient">Ajouter Client</a>
+          <a class="dropdown-item" href="../ServletCheval/ajouterCheval">Ajouter Cheval</a>
+          <a class="dropdown-item" href="../ServletAdmin/ajouterCategVente">Ajouter Catégorie</a>
+          <a class="dropdown-item" href="../ServletAdmin/AjouterLieu">Ajouter Lieu</a>
+          <a class="dropdown-item" href="../ServletAdmin/ajouterPays">Ajouter Pays</a>
         </div>
       </li>
     </ul>

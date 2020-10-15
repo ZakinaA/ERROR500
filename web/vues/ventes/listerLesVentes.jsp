@@ -41,6 +41,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="../ServletVentes/listerLesVentes">Lister Les Ventes</a>
           <a class="dropdown-item" href="../ServletAdmin/listerLesLieux">Lister Les Lieux</a>
+          <a class="dropdown-item" href="../ServletAdmin/listerLesPays">Lister Les Pays</a>
         </div>
       </li>
       </li>
