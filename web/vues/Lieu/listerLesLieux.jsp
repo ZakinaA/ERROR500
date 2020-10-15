@@ -102,6 +102,11 @@
                               out.println("<td><a href ='../ServletAdmin/lieuModifier?idLieu="+ unLieu.getId()+ "'>");
                         out.println("Modifier lieu");
                         out.println("</td>");
+                        
+                        out.println("<td><a href ='../ServletAdmin/supprimerLieu?idLieu="+ unLieu.getId()+ "'>");
+                        out.println("Supprimer");
+                        out.println("</td>");
+
 
                         }
         

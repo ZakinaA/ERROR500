@@ -144,5 +144,32 @@ public class LieuDAO {
         }
         return unLieu ;    
     }
+     
+      public static Lieu supprimerLieu(Connection connection, Lieu unLieu){      
+        try
+        {
+            //preparation de la requete
+            requete=connection.prepareStatement("UPDATE lieu SET archive=1 WHERE id=?");
+            requete.setInt(1, unLieu.getId());
+            
+         
+            
+
+           /* Exécution de la requête */
+            requete.executeUpdate();
+            
+            
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return unLieu ;    
+    }
+    
+      
+     
+     
     
 }

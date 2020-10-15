@@ -25,7 +25,7 @@
                 
  <form class="form-inline" action="lieuModifier" method="POST">
                <label for="id">id : </label>
-                <input id="id" type="text" name="id"  size="10" maxlength="3" value="<%out.println(leLieu.getId());%>">
+                <input id="id" type="text" name="id"  size="10" maxlength="3" value="<%out.println(leLieu.getId());%>" readonly>
                 </br>
             <label for="ville">ville : </label>
                 <input id="ville" type="text" name="ville"  size="50" maxlength="50" value="<%out.println(leLieu.getVille());%>" >

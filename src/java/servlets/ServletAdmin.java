@@ -130,7 +130,14 @@ public class ServletAdmin extends HttpServlet {
            this.getServletContext().getRequestDispatcher("/vues/Lieu/lieuModifier.jsp").forward(request, response);
        }
           
-       
+         if(url.equals("/ERROR500/ServletAdmin/supprimerLieu"))
+        {
+          String id = (String)request.getParameter("idLieu");
+          Lieu unLieu = LieuDAO.getleLieu(connection,id);
+          request.setAttribute("pLeLieu", unLieu);
+          this.getServletContext().getRequestDispatcher("/vues/Lieu/supprimerLieu.jsp" ).forward( request, response );
+        }
+
        
     }
     
@@ -279,6 +286,30 @@ public class ServletAdmin extends HttpServlet {
           
           
           }
+         
+         if(url.equals("/ERROR500/ServletAdmin/supprimerLieu")){
+
+            /* Préparation de l'objet formulaire */
+           LieuForm form = new LieuForm();
+
+           /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+           Lieu unLieu = form.AjouterLieu(request);
+
+           /* Stockage du formulaire et de l'objet dans l'objet request */
+           request.setAttribute( "form", form );
+           request.setAttribute( "pPays", unLieu );
+
+           if (form.getErreurs().isEmpty()){
+               // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
+               LieuDAO.supprimerLieu(connection, unLieu);
+           }
+           else
+           { 
+                   // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+
+
+           }
+        }
     
     }
 
