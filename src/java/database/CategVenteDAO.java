@@ -77,39 +77,6 @@ public class CategVenteDAO {
         }
         return uneCategVente ;    
     }
-    
-        public static ArrayList<CategVente> getLesCategVente(Connection connection){
-        ArrayList<CategVente> lesCategVente = new ArrayList<CategVente>();
-        
-          //On hydrate l'objet métier Client avec les résultats de la requête
-        try
-          
-        {
-            //preparation de la requete  
-            requete=connection.prepareStatement("select * from categvente  where categvente.archive IS NULL OR categvente.archive=0");
-            
-            rs=requete.executeQuery();
-            //On hydrate l'objet métier Client avec les résultats de la requête
-            while (rs.next() ){
-                CategVente uneCategVente = new CategVente();
-                uneCategVente.setCode(rs.getString("code"));
-                uneCategVente.setLibelle(rs.getString("libelle"));
-               
-                lesCategVente.add(uneCategVente);
-                
-                
-            }
-            
-        }
-         catch (SQLException e) 
-        {
-            e.printStackTrace();
-            //out.println("Erreur lors de l’établissement de la connexion");
-        }
-        
-        return lesCategVente;
-            
-    }
-    
+  
    
 }

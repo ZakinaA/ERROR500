@@ -139,7 +139,7 @@ public class ServletAdmin extends HttpServlet {
         }
          
          if(url.equals("/ERROR500/ServletAdmin/listerLesCategVente")){
-             ArrayList<CategVente> lesCategVente = CategVenteDAO.getLesCategVente(connection);
+             ArrayList<CategVente> lesCategVente = CategVenteDAO.getLesCategVentes(connection);
              request.setAttribute("pLesCategVente", lesCategVente);
              getServletContext().getRequestDispatcher("/vues/categVente/listerLesCategVente.jsp").forward(request, response);
          }
