@@ -137,6 +137,12 @@ public class ServletAdmin extends HttpServlet {
           request.setAttribute("pLeLieu", unLieu);
           this.getServletContext().getRequestDispatcher("/vues/Lieu/supprimerLieu.jsp" ).forward( request, response );
         }
+         
+         if(url.equals("/ERROR500/ServletAdmin/listerLesCategVente")){
+             ArrayList<CategVente> lesCategVente = CategVenteDAO.getLesCategVente(connection);
+             request.setAttribute("pLesCategVente", lesCategVente);
+             getServletContext().getRequestDispatcher("/vues/categVente/listerLesCategVente.jsp").forward(request, response);
+         }
 
        
     }
@@ -302,6 +308,7 @@ public class ServletAdmin extends HttpServlet {
            if (form.getErreurs().isEmpty()){
                // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
                LieuDAO.supprimerLieu(connection, unLieu);
+             
            }
            else
            { 

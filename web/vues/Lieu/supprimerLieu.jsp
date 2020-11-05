@@ -12,10 +12,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pays Supprimer</title>
+        <title>Lieu Supprimer</title>
     </head>
     <body>
-        <h1>SUPPRIMER PAYS</h1>
+        <h1>SUPPRIMER LIEU</h1>
         <%
             LieuForm form = (LieuForm)request.getAttribute("form");
             Lieu leLieu = (Lieu)request.getAttribute("pLeLieu");
@@ -39,7 +39,7 @@
                 <input id="commentaire"  type="text"  name="commentaire" size="30" maxlength="30" value="<%out.println(leLieu.getCommentaires());%>" readonly>      
                  </br>
 
-                <input type="submit" name="valider" id="valider" value="Valider" />
+               <input type="submit" name="valider" id="valider" value="Valider"/>
             </form>
     </body>
 </html>
