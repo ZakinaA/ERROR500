@@ -23,6 +23,7 @@ public class Client {
     private String mail;
     private Pays unPays ;
     private ArrayList<CategVente> lesCategVentes ;
+    private Compte unCompte;
 
     public Client() {
     }
@@ -140,5 +141,15 @@ public class Client {
     public int getNbCategVente(){
         return lesCategVentes.size();
     }
+
+    public Compte getUnCompte() {
+        return unCompte;
+    }
+
+    public void setUnCompte(Compte unCompte) {
+        this.unCompte = unCompte;
+    }
+    
+    
     
 }
