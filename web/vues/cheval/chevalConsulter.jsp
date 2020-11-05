@@ -1,25 +1,32 @@
 <%-- 
-    Document   : listerLesLieux
-    Created on : 8 oct. 2020, 14:30:10
-    Author     : Alexis 
+    Document   : ClientAjouter
+    Created on : 22/06, 16:35:27
+    Author     : Zakina
 --%>
+
+<%@page import="modele.Cheval"%>
+<%@page import="modele.TypeCheval"%>
+<%@page import="modele.Client"%>
+<%@page import="formulaires.ChevalForm"%>
+<%@page import="modele.CategVente"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="modele.Lieu"%>
+<%@page import="modele.Pays"%>
+<%@page import="formulaires.ClientForm"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/stylesheet.css">
         <!-- JS, Popper.js, and jQuery -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Liste des lieux</title>
+        <title>Cheval Ajouter</title>
     </head>
     <body>
-       <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">
                <img src="../vues/images/logo.jpg" width="50" height="40" style="display: inline-block;">
             </a>
@@ -59,58 +66,28 @@
   </div>
 </nav>
     <center>
-        <h1>Liste des lieux</h1>
+        <h1>INFOS CHEVAL AJOUTE</h1>
     </center>
-            <%
-        ArrayList<Lieu> lesLieux = (ArrayList)request.getAttribute("pLesLieux");
+        
+             <%
+        Cheval unCheval = (Cheval)request.getAttribute("pCheval");
         %>
         
         
-         <table  class="table table-bordered table-striped table-condensed">  
-            <thead>
-                <tr>             
-                    <th>Id</th>
-                    <th>Ville</th>
-                    <th>Nombres boxes</th>
-                    <th>Commentaire</th>                
-            <br>
-            <br>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <%
-                        for(int i =0; i<lesLieux.size();i++)
-                        {
-                            Lieu unLieu = lesLieux.get(i);
-                            out.println("<tr><td>");
-                            out.println(unLieu.getId());
-                              out.println("</a></td>");
-                              
-                              out.println("<td>");
-                            out.println(unLieu.getVille());
-                            out.println("</td>");
-                            
-                             out.println("<td>");
-                            out.println(unLieu.getNbBoxes());
-                            out.println("</td>");
-                         
-                            out.println("<td>");
-                            out.println(unLieu.getCommentaires());
-                            out.println("</td>");
-                            
-                            out.println("<td><a href ='../ServletAdmin/lieuModifier?idLieu="+ unLieu.getId()+ "'>");
-                        out.println("Modifier lieu");
-                        out.println("</td>");
-
-                        }
-        
-        
-                        %>
-              </tr>
-            </tbody>
-        </table>
-              <footer class="footer-distributed">
+         <table class="table table-bordered table-striped table-condensed">
+            <tr><td>NOM :</td><td><% out.println(unCheval.getNom());%></td></tr>
+            <tr><td>SEXE :</td><td><%  out.println(unCheval.getSexe());%></td>  </tr>
+            <tr><td>SIRE  :</td><td><%  out.println(unCheval.getSire());%></td>  </tr>
+            <tr><td>TYPE CHEVAL :</td><td><%  out.println(unCheval.getUnTypeCheval().getId());%></td></tr>
+            <tr><td>PROPRIETAIRE :</td><td><%  out.println(unCheval.getUnClient().getId());%></td></tr>
+            <tr><td>PERE :</td><td><%  out.println(unCheval.getUnPere().getId());%></td></tr>
+            <tr><td>MERE :</td><td><%  out.println(unCheval.getUneMere().getId());%></td></tr>
+        </table>    
+    
+                 
+                
+           
+                    <footer class="footer-distributed">
 
 			<div class="footer-right">
 

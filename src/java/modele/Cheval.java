@@ -23,9 +23,17 @@ public class Cheval {
     private Cheval uneMere;
     private Client unClient;
     private ArrayList<Lot> lesLots;
+    
+    
 
     public Cheval() {
     }
+
+    public Cheval(int id) {
+        this.id = id;
+    }
+    
+    
 
     public Cheval(int id, String sire, String nom, String sexe, String prixDepart, String CheminPhoto, TypeCheval unTypeCheval, Cheval unPere, Cheval uneMere, Client unClient) {
         this.id = id;
