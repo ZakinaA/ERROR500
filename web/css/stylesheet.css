@@ -110,3 +110,21 @@ section {
     line-height: 1.8;
   }
 }
+
+
+.description {
+    float: left;
+    margin-left: 600px;
+    margin-top: 50px;
+}
+
+.image {
+    margin-left: 700px;
+    width: 650px;
+}
+
+.footer-distributed {
+    position: relative;
+    min-height: 100%;
+    margin-top: 650px;
+}

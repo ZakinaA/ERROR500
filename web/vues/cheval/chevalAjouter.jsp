@@ -47,6 +47,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="../ServletVentes/listerLesVentes">Lister Les Ventes</a>
           <a class="dropdown-item" href="../ServletAdmin/listerLesLieux">Lister Les Lieux</a>
+          <a class="dropdown-item" href="../ServletAdmin/listerLesPays">Lister Les Pays</a>
+          <a class="dropdown-item" href="../ServletAdmin/listerLesCategVente">Lister Les CategVentes</a>
         </div>
       </li>
       </li>
@@ -75,24 +77,24 @@
             %>
         
         <form class="form-inline" action="ajouterCheval" method="POST">
-                <label for="nom">NOM : </label>
-                <input id="nom" type="text" name="nom"  size="40" maxlength="40">
+            <center>
+                <label for="nom">NOM </label>
+                <input id="nom" type="text" name="nom"  size="30" maxlength="40">
                 </br>
                 
-                <label for="sexe">SEXE : </label>
+                <label for="sire">SIRE </label>
+                <input id="sire"  type="text"  name="sire" size="30" maxlength="13">
+                 </br>
+                 
+                <label for="sexe">SEXE </label>
                 <select name="sexe" size="2">
                     <option value ="M">M</option>
                     <option value ="F">F</option>
-                </select>      
-                 </br>
-                 </br>
-                <label for="sire">SIRE : </label>
-                <input id="sire"  type="text"  name="sire" size="13" maxlength="13">
-                 </br>
-                               
-               
-                <label for="typeCheval">TYPE DE CHEVAL : </label>
-                <select name="typeCheval" size="5">
+                </select>     
+                
+                
+                <label for="typeCheval">TYPE DE CHEVAL </label>
+                <select class="TypeCheval" name="typeCheval" size="5">
                 <%
                         ArrayList<TypeCheval> lesTypesChevaux = (ArrayList)request.getAttribute("pLesTypesChevaux");
                         for (int i=0; i<lesTypesChevaux.size();i++){
@@ -101,10 +103,10 @@
                            
                         }
                     %>
-                </select></br>
+                </select>
                
                 
-                <label for="client">CLIENT : </label>
+                <label for="client">CLIENT </label>
                 <select name="client" size="5">
                 <%
                         ArrayList<Client> lesClients = (ArrayList)request.getAttribute("pLesClients");
@@ -114,9 +116,9 @@
                            
                         }
                     %>
-                </select></br>
+                </select>
                 
-                <label for="pere">PERE DU CHEVAL : </label>
+                <label for="pere">PERE DU CHEVAL </label>
                 <select name="pere" size="5">
                 <%
                         ArrayList<Cheval> lesChevauxPeres = (ArrayList)request.getAttribute("pLesChevauxMales");
@@ -126,9 +128,9 @@
                            
                         }
                     %>
-                </select></br>
+                </select>
                 
-                <label for="mere">MERE DU CHEVAL : </label>
+                <label for="mere">MERE DU CHEVAL </label>
                 <select name="mere" size="5">
                 <%
                         ArrayList<Cheval> lesChevauxMeres = (ArrayList)request.getAttribute("pLesChevauxFemelles");
@@ -139,15 +141,8 @@
                         }
                     %>
                 </select></br>
-                
-                
-
-                
-                
-               
-                 
-                
-            <input type="submit" name="valider" id="valider" value="Valider"/>
+                <input type="submit" name="valider" id="valider" value="Valider"/>
+                </center>
             </form>
         
                  
@@ -180,7 +175,7 @@
 					<a href="#">Contact</a>
 				</p>
 
-				<p>Equida GANG &copy; 2020</p>
+				<p>Equida &copy; 2020</p>
 			</div>
 
 		</footer>

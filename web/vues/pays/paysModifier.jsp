@@ -42,6 +42,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="../ServletVentes/listerLesVentes">Lister Les Ventes</a>
           <a class="dropdown-item" href="../ServletAdmin/listerLesLieux">Lister Les Lieux</a>
+          <a class="dropdown-item" href="../ServletAdmin/listerLesPays">Lister Les Pays</a>
+          <a class="dropdown-item" href="../ServletAdmin/listerLesCategVente">Lister Les CategVentes</a>
         </div>
       </li>
       </li>
@@ -107,7 +109,7 @@
 					<a href="#">Contact</a>
 				</p>
 
-				<p>Equida GANG &copy; 2020</p>
+				<p>Equida &copy; 2020</p>
 			</div>
 
 		</footer>

@@ -40,6 +40,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="../ServletVentes/listerLesVentes">Lister Les Ventes</a>
           <a class="dropdown-item" href="../ServletAdmin/listerLesLieux">Lister Les Lieux</a>
+          <a class="dropdown-item" href="../ServletAdmin/listerLesPays">Lister Les Pays</a>
+          <a class="dropdown-item" href="../ServletAdmin/listerLesCategVente">Lister Les CategVentes</a>
         </div>
       </li>
       </li>
@@ -63,17 +65,17 @@
     </center>
     <center>
         <form class="form-inline" action="AjouterLieu" method="POST">
-                <label for="id">id  </label>
+                <label for="id">ID  </label>
                 <input id="id" type="text" name="id"  size="30" maxlength="3">
                 </br>
-            <label for="ville">ville  </label>
+            <label for="ville">VILLE  </label>
                 <input id="ville" type="text" name="ville"  size="50" maxlength="50">
                 </br>
-        <label for="Nombre box"> Nombre box </label>
+        <label for="Nombre box"> NOMBRE BOX </label>
                 <input id="Nombre box" type="text" name="nbBoxes"  size="30" maxlength="50">
                 </br>
 
-        <label for="Commentaire"> Commentaire: </label>
+        <label for="Commentaire"> COMMENTAIRE </label>
 
                 <input id="Commentaire" type="text" name="Commentaire"  size="50" maxlength="50">
                 </br>
@@ -111,7 +113,7 @@
 					<a href="#">Contact</a>
 				</p>
 
-				<p>Equida GANG &copy; 2020</p>
+				<p>Equida &copy; 2020</p>
 			</div>
 
 		</footer>

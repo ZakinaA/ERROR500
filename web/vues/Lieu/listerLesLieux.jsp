@@ -40,6 +40,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="../ServletVentes/listerLesVentes">Lister Les Ventes</a>
           <a class="dropdown-item" href="../ServletAdmin/listerLesLieux">Lister Les Lieux</a>
+          <a class="dropdown-item" href="../ServletAdmin/listerLesPays">Lister Les Pays</a>
+          <a class="dropdown-item" href="../ServletAdmin/listerLesCategVente">Lister Les CategVentes</a>
         </div>
       </li>
       </li>
@@ -59,7 +61,7 @@
   </div>
 </nav>
     <center>
-        <h1>Liste des lieux</h1>
+        <h1>LISTE DES LIEUX</h1>
     </center>
             <%
         ArrayList<Lieu> lesLieux = (ArrayList)request.getAttribute("pLesLieux");
@@ -142,7 +144,7 @@
 					<a href="#">Contact</a>
 				</p>
 
-				<p>Equida GANG &copy; 2020</p>
+				<p>Equida &copy; 2020</p>
 			</div>
 
 		</footer>
