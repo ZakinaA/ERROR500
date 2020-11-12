@@ -164,23 +164,23 @@ public class ServletAdmin extends HttpServlet {
          String url = request.getRequestURI();
         
          if(url.equals("/ERROR500/ServletAdmin/AjouterLieu")){
-        LieuForm form = new LieuForm();
-      
-     Lieu unLieu = form.AjouterLieu(request);
-      
-      request.setAttribute("form", form);
-      request.setAttribute("pLieu", unLieu);
-      
-      
-      if(form.getErreurs().isEmpty()){
-          
-             LieuDAO.AjouterLieu(connection, unLieu);
-          this.getServletContext().getRequestDispatcher("/vues/Lieu/LieuConsulter.jsp" ).forward( request, response );
-      }
-      else
-      {
-          
-      }
+            LieuForm form = new LieuForm();
+
+         Lieu unLieu = form.AjouterLieu(request);
+
+          request.setAttribute("form", form);
+          request.setAttribute("pLieu", unLieu);
+
+
+          if(form.getErreurs().isEmpty()){
+
+                 LieuDAO.AjouterLieu(connection, unLieu);
+              this.getServletContext().getRequestDispatcher("/vues/Lieu/LieuConsulter.jsp" ).forward( request, response );
+          }
+          else
+          {
+
+          }
         
          }
         if(url.equals("/ERROR500/ServletAdmin/ajouterCategVente")){

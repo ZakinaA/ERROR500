@@ -115,6 +115,29 @@ public class ServletCheval extends HttpServlet {
            
             this.getServletContext().getRequestDispatcher("/vues/cheval/chevalAjouter.jsp" ).forward( request, response );
         }
+        if(url.equals("/ERROR500/ServletCheval/modifierCheval"))
+        {
+          String id = (String)request.getParameter("id");
+          System.out.println(id);
+          
+          
+          ArrayList<Client> lesClients = ClientDAO.getLesClients(connection);
+            request.setAttribute("pLesClients", lesClients);
+            
+            
+            ArrayList<TypeCheval> lesTypesChevaux = TypeChevalDAO.getLesTypesChevaux(connection);
+            request.setAttribute("pLesTypesChevaux", lesTypesChevaux);
+            
+            ArrayList<Cheval> lesChevauxMales = ChevalDAO.getLesChevauxMales(connection);
+            request.setAttribute("pLesChevauxMales", lesChevauxMales);
+            
+            ArrayList<Cheval> lesChevauxFemelles = ChevalDAO.getLesChevauxFemelles(connection);
+            request.setAttribute("pLesChevauxFemelles", lesChevauxFemelles);
+            
+          Cheval unCheval = ChevalDAO.getLeCheval(connection, id);
+          request.setAttribute("pLeCheval", unCheval);
+          this.getServletContext().getRequestDispatcher("/vues/cheval/chevalModifier.jsp" ).forward( request, response );
+        }
     }
 
     /**
@@ -129,29 +152,59 @@ public class ServletCheval extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
                
-         /* Préparation de l'objet formulaire */
-        ChevalForm form = new ChevalForm();
-		
-        /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
-        Cheval unCheval = form.ajouterCheval(request);
+        String url = request.getRequestURI();
         
-        /* Stockage du formulaire et de l'objet dans l'objet request */
-        request.setAttribute( "form", form );
-        request.setAttribute( "pCheval", unCheval );
-		
-        if (form.getErreurs().isEmpty()){
-            // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
-            ChevalDAO.ajouterCheval(connection, unCheval);
-            this.getServletContext().getRequestDispatcher("/vues/cheval/chevalConsulter.jsp" ).forward( request, response );
+        if(url.equals("/ERROR500/ServletCheval/ajouterCheval")){
+            /* Préparation de l'objet formulaire */
+           ChevalForm form = new ChevalForm();
+
+           /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+           Cheval unCheval = form.ajouterCheval(request);
+
+           /* Stockage du formulaire et de l'objet dans l'objet request */
+           request.setAttribute( "form", form );
+           request.setAttribute( "pCheval", unCheval );
+
+           if (form.getErreurs().isEmpty()){
+               // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
+               ChevalDAO.ajouterCheval(connection, unCheval);
+               this.getServletContext().getRequestDispatcher("/vues/cheval/chevalConsulter.jsp" ).forward( request, response );
+           }
+           else
+           { 
+                   // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+               ArrayList<Client> lesClients = ClientDAO.getLesClients(connection);
+               request.setAttribute("pLesClients", lesClients);
+
+
+              this.getServletContext().getRequestDispatcher("/vues/cheval/chevalAjouter.jsp" ).forward( request, response );
+           }
         }
-        else
-        { 
-		// il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
-            ArrayList<Client> lesClients = ClientDAO.getLesClients(connection);
-            request.setAttribute("pLesClients", lesClients);
-            
-            
-           this.getServletContext().getRequestDispatcher("/vues/cheval/chevalAjouter.jsp" ).forward( request, response );
+           
+        
+        
+        if(url.equals("/ERROR500/ServletCheval/modifierCheval")){
+
+            /* Préparation de l'objet formulaire */
+           ChevalForm form = new ChevalForm();
+
+           /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+           Cheval unCheval = form.modifierCheval(request);
+
+           /* Stockage du formulaire et de l'objet dans l'objet request */
+           request.setAttribute( "form", form );
+           request.setAttribute( "pCheval", unCheval );
+
+           if (form.getErreurs().isEmpty()){
+               ChevalDAO.modifierCheval(connection, unCheval);
+               this.getServletContext().getRequestDispatcher("/vues/cheval/chevalConsulter.jsp" ).forward( request, response );
+           }
+           else
+           { 
+                   // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+
+
+           }
         }
     
     }

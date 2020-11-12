@@ -106,14 +106,7 @@ public class ChevalForm {
         unCheval.setUnClient(unClient);
         unCheval.setUnPere(unChevalPere);
         unCheval.setUneMere(unChevalMere);
-        
-        
-        
-        
-        
-        
-        
-        
+  
         System.out.println(unCheval.getSire());
             System.out.println(unCheval.getNom());
             System.out.println(unCheval.getUnTypeCheval().getId());
@@ -121,10 +114,60 @@ public class ChevalForm {
             System.out.println(unCheval.getUnPere());
             System.out.println(unCheval.getUneMere());
             System.out.println(unCheval.getUnClient());
+     
+       
+        return unCheval;
+    }
+    
+    public Cheval modifierCheval( HttpServletRequest request ) {
+      
+        Cheval unCheval  = new Cheval();
+      
         
+        String id = getDataForm( request, "id");
+        String nom = getDataForm( request, "nom" );
+        String sexe = getDataForm( request, "sexe");
+        String sire = getDataForm( request, "sire" );
         
+        TypeCheval unTypeCheval = new TypeCheval();
+        String tc_id = getDataForm( request, "typeCheval" );
+        unTypeCheval.setId(Integer.parseInt(tc_id));
         
-               
+        Client unClient = new Client();
+        String c_id = getDataForm( request, "client" );
+        unClient.setId(Integer.parseInt(c_id));
+        
+        Cheval unChevalPere = new Cheval();
+        String cp_id = getDataForm( request, "pere" );
+        unChevalPere.setId(Integer.parseInt(cp_id));
+        
+        Cheval unChevalMere = new Cheval();
+        String cm_id = getDataForm( request, "mere" );
+        unChevalMere.setId(Integer.parseInt(cm_id));
+        
+ 
+       
+        try {
+             validationNom( nom );
+        } catch ( Exception e ) {
+            setErreur( "nom", e.getMessage() );
+        }
+        unCheval.setNom(nom);
+
+        if ( erreurs.isEmpty() ) {
+            resultat = "Succès de l'ajout.";
+        } else {
+            resultat = "Échec de l'ajout.";
+        }
+         
+        unCheval.setId(Integer.parseInt(id));
+        unCheval.setNom(nom);
+        unCheval.setSexe(sexe);
+        unCheval.setSire(sire);
+        unCheval.setUnTypeCheval(unTypeCheval);
+        unCheval.setUnClient(unClient);
+        unCheval.setUnPere(unChevalPere);
+        unCheval.setUneMere(unChevalMere);     
        
         return unCheval;
     }
