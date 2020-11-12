@@ -96,4 +96,145 @@ public class ChevalDAO {
         }
         return unCheval;    
     }
+    
+    public static Cheval ajouterCheval(Connection connection, Cheval unCheval){
+        System.out.println("DANS CHEVAL DAO");
+        int idGenere = -1;
+        try
+        {
+            //preparation de la requete
+            // id (clé primaire de la table client) est en auto_increment,donc on ne renseigne pas cette valeur
+            // la paramètre RETURN_GENERATED_KEYS est ajouté à la requête afin de pouvoir récupérer l'id généré par la bdd (voir ci-dessous)
+            // supprimer ce paramètre en cas de requête sans auto_increment.
+            
+            requete=connection.prepareStatement("INSERT INTO cheval ( sire, nom, sexe, idType, Père, Mère, idClient)\n" +
+                    "VALUES (?,?,?,?,?,?,?)", requete.RETURN_GENERATED_KEYS );
+            requete.setString(1, unCheval.getSire());
+            requete.setString(2, unCheval.getNom());
+            requete.setString(3, unCheval.getSexe());
+            requete.setInt(4, unCheval.getUnTypeCheval().getId());
+            requete.setInt(5, unCheval.getUnPere().getId());
+            requete.setInt(6, unCheval.getUneMere().getId());
+            requete.setInt(7, unCheval.getUnClient().getId());
+            
+            System.out.println(unCheval.getSire());
+            System.out.println(unCheval.getNom());
+            System.out.println(unCheval.getUnTypeCheval().getId());
+            System.out.println(unCheval.getSexe());
+            System.out.println(unCheval.getUnPere().getId());
+            System.out.println(unCheval.getUneMere().getId());
+            System.out.println(unCheval.getUnClient().getId());
+            
+           /* Exécution de la requête */
+            requete.executeUpdate();
+            
+            System.out.println("APRES INSERTION");
+            
+             // Récupération de id auto-généré par la bdd dans la table client
+            rs = requete.getGeneratedKeys();
+            while ( rs.next() ) {
+                idGenere = rs.getInt( 1 );
+                unCheval.setId(idGenere);
+            }
+            
+          
+            
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return unCheval ;    
+    }
+    
+    public static ArrayList<Cheval>  getLesChevaux(Connection connection){      
+        ArrayList<Cheval> lesChevaux = new  ArrayList<Cheval>();
+        try
+        {
+            //preparation de la requete     
+            requete=connection.prepareStatement("select * from cheval ORDER BY nom ");
+            
+            //executer la requete
+            rs=requete.executeQuery();
+            
+            //On hydrate l'objet métier Client avec les résultats de la requête
+            while ( rs.next() ) {  
+                Cheval unCheval = new Cheval();
+                unCheval.setId(rs.getInt("id"));
+                unCheval.setSire(rs.getString("sire"));
+                unCheval.setNom(rs.getString("nom"));
+                unCheval.setSexe(rs.getString("sexe"));
+                
+                
+                lesChevaux.add(unCheval);
+            }
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return lesChevaux ;    
+    }
+    
+    public static ArrayList<Cheval>  getLesChevauxMales(Connection connection){      
+        ArrayList<Cheval> lesChevauxMales = new  ArrayList<Cheval>();
+        try
+        {
+            //preparation de la requete     
+            requete=connection.prepareStatement("select * from cheval WHERE sexe = 'M' ORDER BY nom ");
+            
+            //executer la requete
+            rs=requete.executeQuery();
+            
+            //On hydrate l'objet métier Client avec les résultats de la requête
+            while ( rs.next() ) {  
+                Cheval unCheval = new Cheval();
+                unCheval.setId(rs.getInt("id"));
+                unCheval.setSire(rs.getString("sire"));
+                unCheval.setNom(rs.getString("nom"));
+                unCheval.setSexe(rs.getString("sexe"));
+                
+                
+                lesChevauxMales.add(unCheval);
+            }
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return lesChevauxMales ;    
+    } 
+    
+    public static ArrayList<Cheval>  getLesChevauxFemelles(Connection connection){      
+        ArrayList<Cheval> lesChevauxFemelles = new  ArrayList<Cheval>();
+        try
+        {
+            //preparation de la requete     
+            requete=connection.prepareStatement("select * from cheval WHERE sexe = 'F' ORDER BY nom ");
+            
+            //executer la requete
+            rs=requete.executeQuery();
+            
+            //On hydrate l'objet métier Client avec les résultats de la requête
+            while ( rs.next() ) {  
+                Cheval unCheval = new Cheval();
+                unCheval.setId(rs.getInt("id"));
+                unCheval.setSire(rs.getString("sire"));
+                unCheval.setNom(rs.getString("nom"));
+                unCheval.setSexe(rs.getString("sexe"));
+                
+                
+                lesChevauxFemelles.add(unCheval);
+            }
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return lesChevauxFemelles ;    
+    } 
 }

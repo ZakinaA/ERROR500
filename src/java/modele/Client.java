@@ -28,6 +28,12 @@ public class Client {
     public Client() {
     }
 
+    public Client(int id) {
+        this.id = id;
+    }
+    
+    
+
     public Client(int id, String titre, String nom, String prenom, String rue, String copos, String ville, String mail, Pays unPays) {
         this.id = id;
         this.titre = titre;
