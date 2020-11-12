@@ -93,6 +93,13 @@
         <servlet-name>ServletCheval</servlet-name>
         <url-pattern>/ServletCheval/consulterCheval</url-pattern>
     </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ServletCheval</servlet-name>
+        <url-pattern>/ServletCheval/modifierCheval</url-pattern>
+    </servlet-mapping>
+    
+    
     <servlet-mapping>
         <servlet-name>ServletAdmin</servlet-name>
         <url-pattern>/ServletAdmin</url-pattern>
@@ -142,6 +149,10 @@
         <servlet-mapping>
          <servlet-name>ServletAdmin</servlet-name>
         <url-pattern>/ServletAdmin/listerLesCategVente</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+         <servlet-name>ServletAdmin</servlet-name>
+        <url-pattern>/ServletAdmin/categVenteModifier</url-pattern>
     </servlet-mapping>
     
     

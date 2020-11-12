@@ -148,6 +148,37 @@ public class ChevalDAO {
         return unCheval ;    
     }
     
+    public static Cheval modifierCheval(Connection connection, Cheval unCheval){
+
+        try
+        {
+           
+            requete=connection.prepareStatement("UPDATE cheval SET sire=?,nom=?,sexe=?, idType=?,Père=?,Mère=?,idClient=? WHERE id=?");
+            requete.setInt(8, unCheval.getId());
+            requete.setString(1, unCheval.getSire());
+            requete.setString(2, unCheval.getNom());
+            requete.setString(3, unCheval.getSexe());
+            requete.setInt(4, unCheval.getUnTypeCheval().getId());
+            requete.setInt(5, unCheval.getUnPere().getId());
+            requete.setInt(6, unCheval.getUneMere().getId());
+            requete.setInt(7, unCheval.getUnClient().getId());
+            
+            
+            System.out.println("requete " + requete);
+            
+           /* Exécution de la requête */
+            requete.executeUpdate();
+ 
+            
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return unCheval ;    
+    }
+    
     public static ArrayList<Cheval>  getLesChevaux(Connection connection){      
         ArrayList<Cheval> lesChevaux = new  ArrayList<Cheval>();
         try
@@ -176,6 +207,48 @@ public class ChevalDAO {
             //out.println("Erreur lors de l’établissement de la connexion");
         }
         return lesChevaux ;    
+    }
+    
+    public static Cheval getLeCheval(Connection connection, String id){      
+        Cheval unCheval = new Cheval();
+        try
+        {
+            //preparation de la requete     
+            requete=connection.prepareStatement("select cheval.*, tc.id, ch2.id, ch3.id, cl.id from cheval, typecheval tc, cheval ch2, cheval ch3, client cl where cheval.id=? AND cheval.idType = tc.id AND cheval.père = ch2.id AND cheval.mère = ch3.id AND cheval.idClient = cl.id AND( cheval.archive IS NULL OR cheval.archive=0)");
+            requete.setString(1, id);
+            //executer la requete
+            rs=requete.executeQuery();
+            
+            while ( rs.next() ) {  
+                unCheval.setId(rs.getInt("id"));
+                unCheval.setSire(rs.getString("sire"));
+                unCheval.setNom(rs.getString("nom"));
+                unCheval.setSexe(rs.getString("sexe"));
+                
+                TypeCheval unTypeCheval = new TypeCheval();
+                unTypeCheval.setId(rs.getInt("tc.id"));
+                unCheval.setUnTypeCheval(unTypeCheval);
+                
+                Cheval unChevalPere = new Cheval();
+                unChevalPere.setId(rs.getInt("ch2.id"));
+                unCheval.setUnPere(unChevalPere);
+                
+                Cheval unChevalMere = new Cheval();
+                unChevalMere.setId(rs.getInt("ch3.id"));
+                unCheval.setUneMere(unChevalMere);
+                
+                Client unClient = new Client();
+                unClient.setId(rs.getInt("cl.id"));
+                unCheval.setUnClient(unClient);
+                
+            }
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return unCheval;    
     }
     
     public static ArrayList<Cheval>  getLesChevauxMales(Connection connection){      
