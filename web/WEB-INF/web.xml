@@ -134,6 +134,10 @@
          <servlet-name>ServletAdmin</servlet-name>
         <url-pattern>/ServletAdmin/listerLesCategVente</url-pattern>
     </servlet-mapping>
+     <servlet-mapping>
+         <servlet-name>ServletAdmin</servlet-name>
+        <url-pattern>/ServletAdmin/categVenteModifier</url-pattern>
+    </servlet-mapping>
     
     
 <session-config>

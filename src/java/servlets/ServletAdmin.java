@@ -144,6 +144,13 @@ public class ServletAdmin extends HttpServlet {
              getServletContext().getRequestDispatcher("/vues/categVente/listerLesCategVente.jsp").forward(request, response);
          }
 
+         if(url.equals("/ERROR500/ServletAdmin/categVenteModifier")){
+             String id = (String)request.getParameter("codeCategVente");
+             CategVente uneCategVente = CategVenteDAO.getuneCategVente(connection, id);
+             request.setAttribute("plaCategVente", uneCategVente);
+                  System.out.println("CategVente= "+ uneCategVente.getLibelle());
+             this.getServletContext().getRequestDispatcher("/vues/categVente/categVenteModifier.jsp").forward(request, response);
+         }
        
     }
     
@@ -208,12 +215,6 @@ public class ServletAdmin extends HttpServlet {
            }
         }
 
-        else
-        { 
-		// il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
-                       
-           
-        } 
         
 
 
@@ -309,6 +310,31 @@ public class ServletAdmin extends HttpServlet {
                // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
                LieuDAO.supprimerLieu(connection, unLieu);
              
+           }
+           else
+           { 
+                   // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+
+
+           }
+        }
+         
+         if(url.equals("/ERROR500/ServletAdmin/categVenteModifier")){
+
+            /* Préparation de l'objet formulaire */
+           CategVenteForm form = new CategVenteForm();
+
+           /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+           CategVente uneCategVente = form.ajouterCategVente(request);
+
+           /* Stockage du formulaire et de l'objet dans l'objet request */
+           request.setAttribute( "form", form );
+           request.setAttribute( "pCategVente", uneCategVente );
+
+           if (form.getErreurs().isEmpty()){
+               // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
+               CategVenteDAO.modifierCategVente(connection, uneCategVente);
+               this.getServletContext().getRequestDispatcher("/vues/categVente/categVenteConsulter.jsp" ).forward( request, response );
            }
            else
            { 
