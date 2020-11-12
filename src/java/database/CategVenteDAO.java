@@ -78,5 +78,62 @@ public class CategVenteDAO {
         return uneCategVente ;    
     }
   
+     public static CategVente getuneCategVente(Connection connection, String id){  
+        CategVente uneCategVente = new CategVente();
+        try
+        {
+            //preparation de la requete
+        
+         requete=connection.prepareStatement("select * from categvente where code=?");
+         requete.setString(1, id);
+         System.out.println("REQUETE " + requete);
+         //executer la requete
+         rs=requete.executeQuery();
+         
+       
+          while (rs.next()) {  
+               uneCategVente.setCode(rs.getString("code"));
+                uneCategVente.setLibelle(rs.getString("libelle"));
+                
+            }
+         
+         
+      
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return uneCategVente;   
+        
+  }
    
+      public static CategVente modifierCategVente(Connection connection, CategVente uneCategVente){      
+        try
+        {
+            //preparation de la requete
+            requete=connection.prepareStatement("UPDATE categvente SET libelle=? WHERE code=?");
+            System.out.println("CATEG requete="+requete);
+            
+            requete.setString(1, uneCategVente.getLibelle());
+            requete.setString(2, uneCategVente.getCode());
+           
+            
+
+          
+            requete.executeUpdate();
+            
+            
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return uneCategVente ;    
+    }
+     
+     
+     
 }

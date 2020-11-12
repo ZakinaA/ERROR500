@@ -48,11 +48,11 @@
                             
                           
                             
-                      /*        out.println("<td><a href ='../ServletAdmin/lieuModifier?idLieu="+ unLieu.getId()+ "'>");
-                        out.println("Modifier lieu");
+                           out.println("<td><a href ='../ServletAdmin/categVenteModifier?codeCategVente="+ uneCategVente.getCode()+ "'>");
+                        out.println("Modifier");
                         out.println("</td>");
                         
-                        out.println("<td><a href ='../ServletAdmin/supprimerLieu?idLieu="+ unLieu.getId()+ "'>");
+                      /*  out.println("<td><a href ='../ServletAdmin/supprimerLieu?idLieu="+ unLieu.getId()+ "'>");
                         out.println("Supprimer");
                         out.println("</td>");*/
 
